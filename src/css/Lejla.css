@@ -1,0 +1,98 @@
+.category-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  h2 {
+    color: #5A738E;
+    font-size: 2em;
+  }
+  
+  .category-form {
+    margin-top: 20px;
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  input[type="text"], input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 20px;
+    font-size: 1em;
+    text-align: center;
+  }
+  
+  .budget-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .budget-input span {
+    margin-left: 10px;
+    font-size: 1.2em;
+  }
+  
+  .color-picker {
+    margin-bottom: 20px;
+  }
+  
+  .color-options {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+  }
+  
+  .color-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+  }
+  
+  .color-circle.selected {
+    border: 2px solid #000;
+  }
+  
+  .add-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    background-color: #00B9CE;
+    color: white;
+  }
+  
+  .submit-btn {
+    background-color: #00B9CE;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+  }
+  
+  .category-list {
+    margin-top: 30px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .category-card {
+    padding: 15px;
+    border-radius: 10px;
+    width: 150px;
+    color: white;
+    text-align: center;
+  }
+  
