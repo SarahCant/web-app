@@ -95,4 +95,11 @@ input[type="number"] {
   width: 150px;
   color: white;
   text-align: center;
+  border: none;
+}
+
+.category_btn {
+  border: none;
+  /*  border-radius: ;  Match .category-card */
+  /*  width: ;  Match .category-card */
 }

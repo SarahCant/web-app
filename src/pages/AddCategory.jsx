@@ -18,7 +18,6 @@ export default function AddCategory() {
       name: categoryName,
       budget: budget,
       color: color,
-      cid: "", //category id
     };
 
     const url =
@@ -32,6 +31,13 @@ export default function AddCategory() {
     });
 
     if (response.ok) {
+      const responseData = await response.json();
+      const uniqueId = responseData.name; // Firebase retunerer det generede key som name
+
+      newCategory.cid = uniqueId;
+
+      setCategories([...categories, { ...newCategory, id: uniqueId }]);
+
       navigate("/"); // Ret hvor den navigerer til
     } else {
       console.error("Kategori ikke opretter", response.statusText);
