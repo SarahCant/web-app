@@ -1,16 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../css/Lejla.css"; // Husk at oprette denne fil til styling
+import "../css/Lejla.css";
 //import Category from "../components/Category";
 import { useEffect } from "react";
+import Category from "../components/Category";
 
 export default function AddCategory() {
   // State til kategorier
-  const [categories, setCategories] = useState([]);
+  const [setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [budget, setBudget] = useState("");
   const [color, setColor] = useState("");
   const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    if (!categoryName || !budget || !color) {
+      alert("Udfyld venligst alle felter!");
+      return;
+    }
+  }
 
   // Liste over farver som i billedet
   const colors = [
@@ -24,19 +33,26 @@ export default function AddCategory() {
     "#00B9CE",
   ];
 
-  async function handleSubmit(e) {
-    e.preventDefault();
-    if (!categoryName || !budget || !color) {
-      alert("Udfyld venligst alle felter!");
-      return;
+  useEffect(() => {
+    async function getCategory() {
+      const url =
+        "https://web-app-c295f-default-rtdb.firebaseio.com/category.json";
+      const response = await fetch(url);
+      const data = await response.json();
+      const postArray = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
+      setCategories(postArray);
     }
+    getCategory();
+  }, []);
 
-    let newCategory = {
-      name: categoryName,
-      budget: budget,
-      color: color,
-      cid: "", //category id
-    };
+  if (response.ok) {
+    navigate("/"); // Ret hvor den navigerer til
+  } else {
+    console.error("Kategori ikke opretter", response.statusText);
+  }
 
     const url =
       "https://web-app-c295f-default-rtdb.firebaseio.com/category.json";
@@ -45,20 +61,8 @@ export default function AddCategory() {
       body: JSON.stringify(newCategory),
     });
 
-    if (response.ok) {
-      navigate("/"); // Ret hvor den navigerer til
-    } else {
-      console.error("Kategori ikke opretter", response.statusText);
-    }
-
-    setCategories([...categories, newCategory]);
-    setCategoryName("");
-    setBudget("");
-    setColor("");
-  }
-
   return (
-    <div className="category-container">
+    <div className="AddCategory_container">
       <h2>Kategorier</h2>
 
       <form onSubmit={handleSubmit} className="category-form">
@@ -106,18 +110,8 @@ export default function AddCategory() {
       </form>
 
       <h3>Liste over kategorier:</h3>
-      <div className="category-list">
-        {categories.map((category, index) => (
-          <div
-            key={index}
-            className="category-card"
-            style={{ backgroundColor: category.color }}
-          >
-            <p>{category.name}</p>
-            <p>{category.budget} DKK</p>
-          </div>
-        ))}
-      </div>
+
+      <Category />
     </div>
   );
 }

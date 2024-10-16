@@ -1,10 +1,10 @@
 import "./css/App.css";
-import FrontPage from "./pages/FrontPage";
+import AddCategory from "./pages/AddCategory";
 
 function App() {
   return (
     <>
-      <FrontPage />
+      <AddCategory />
     </>
   );
 }
