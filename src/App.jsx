@@ -1,12 +1,12 @@
 import "./css/App.css";
+import AddCategory from "./pages/AddCategory";
 import FrontPage from "./pages/FrontPage";
 
-function App() {
+export default function App() {
   return (
     <>
       <FrontPage />
+      <AddCategory />
     </>
   );
 }
-
-export default App;
