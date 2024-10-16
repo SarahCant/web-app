@@ -1,13 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Lejla.css";
-//import Category from "../components/Category";
-import { useEffect } from "react";
 import Category from "../components/Category";
 
 export default function AddCategory() {
   // State til kategorier
-  const [setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [budget, setBudget] = useState("");
   const [color, setColor] = useState("");
@@ -15,9 +13,28 @@ export default function AddCategory() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    if (!categoryName || !budget || !color) {
-      alert("Udfyld venligst alle felter!");
-      return;
+
+    let newCategory = {
+      name: categoryName,
+      budget: budget,
+      color: color,
+      cid: "", //category id
+    };
+
+    const url =
+      "https://web-app-c295f-default-rtdb.firebaseio.com/category.json";
+    const response = await fetch(url, {
+      method: "POST",
+      body: JSON.stringify(newCategory),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    if (response.ok) {
+      navigate("/"); // Ret hvor den navigerer til
+    } else {
+      console.error("Kategori ikke opretter", response.statusText);
     }
   }
 
@@ -47,19 +64,6 @@ export default function AddCategory() {
     }
     getCategory();
   }, []);
-
-  if (response.ok) {
-    navigate("/"); // Ret hvor den navigerer til
-  } else {
-    console.error("Kategori ikke opretter", response.statusText);
-  }
-
-    const url =
-      "https://web-app-c295f-default-rtdb.firebaseio.com/category.json";
-    const response = await fetch(url, {
-      method: "POST",
-      body: JSON.stringify(newCategory),
-    });
 
   return (
     <div className="AddCategory_container">
@@ -111,7 +115,7 @@ export default function AddCategory() {
 
       <h3>Liste over kategorier:</h3>
 
-      <Category />
+      <Category categories={categories} />
     </div>
   );
 }

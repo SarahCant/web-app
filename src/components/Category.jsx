@@ -1,14 +1,11 @@
-import { useState } from "react";
 import "../css/Lejla.css";
 
-export default function Category() {
-  const [categories] = useState([]);
-
+export default function Category({ categories }) {
   return (
     <div className="category-list">
-      {categories.map((category, index) => (
+      {categories.map((category) => (
         <div
-          key={index}
+          key={category.id}
           className="category-card"
           style={{ backgroundColor: category.color }}
         >
