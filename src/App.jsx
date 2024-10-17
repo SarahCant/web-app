@@ -7,10 +7,16 @@ import Budget from "./pages/Budget";
 
 export default function App() {
   return (
+    <div>
+
+<Menu />
     <Routes>
     <Route path="/" element={<FrontPage/>} />
     <Route path="/budget" element={<Budget/>} />
-    <Menu />
-</Routes>
+    <Route path="/addcategory" element={<AddCategory />} />
+
+    </Routes>
+    </div>
+
   );
 }
