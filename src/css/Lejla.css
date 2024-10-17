@@ -103,3 +103,16 @@ input[type="number"] {
   /*  border-radius: ;  Match .category-card */
   /*  width: ;  Match .category-card */
 }
+
+.button_budget {
+  position: absolute;
+  top: 15px;
+  left: calc(50% - 25px);
+  padding: 10px 20px;
+  /* opacity: 0; */
+  transition: opacity 1s ease;
+}
+
+.button_budget:hover {
+  /* opacity: 1; */
+}
