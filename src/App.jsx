@@ -1,3 +1,4 @@
+import Menu from "./components/Menu";
 import "./css/App.css";
 import AddCategory from "./pages/AddCategory";
 import FrontPage from "./pages/FrontPage";
@@ -5,8 +6,9 @@ import FrontPage from "./pages/FrontPage";
 export default function App() {
   return (
     <>
-      <FrontPage />
       <AddCategory />
+      <FrontPage />
+      <Menu />
     </>
   );
 }
