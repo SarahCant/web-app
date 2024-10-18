@@ -1,5 +1,7 @@
-import Menu from "./components/Menu";
+import "./css/reset.css";
 import "./css/App.css";
+
+import Menu from "./components/Menu";
 import { Routes, Route } from "react-router-dom";
 import AddCategory from "./pages/AddCategory";
 import FrontPage from "./pages/FrontPage";

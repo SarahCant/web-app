@@ -1,5 +1,5 @@
 export default function AddExpenses() {
-  root(
+  return (
     <div>
       <h1>hej</h1>
       <p>addexpenses</p>

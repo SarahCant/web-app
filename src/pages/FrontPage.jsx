@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Circle from "../components/Circle";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../css/Sarah.css";
 
 export default function FrontPage() {
   const [categories, setCategories] = useState([]);
@@ -27,18 +28,22 @@ export default function FrontPage() {
 
   return (
     <div>
-      <h1>hej</h1>
+      <h1 className="frontpage_title">hej</h1>
       <h2>forsiden</h2>
       {categories.length > 0 && <Circle categories={categories} />}
 
       <Link to="/budget">
-        <button style={{ padding: '10px 20px', marginTop: '20px', fontSize: '16px' }}>
+        <button
+          style={{ padding: "10px 20px", marginTop: "20px", fontSize: "16px" }}
+        >
           Gå til Budget-siden
         </button>
       </Link>
 
       <Link to="/addcategory">
-        <button style={{ padding: '10px 20px', marginTop: '20px', fontSize: '16px' }}>
+        <button
+          style={{ padding: "10px 20px", marginTop: "20px", fontSize: "16px" }}
+        >
           Gå til tilføj kategori
         </button>
       </Link>
