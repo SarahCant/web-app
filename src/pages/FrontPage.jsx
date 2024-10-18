@@ -107,8 +107,18 @@ export default function FrontPage() {
       <div className={`fp_hidden ${isScrolled ? "scrolled" : ""}`}>
         <p>Quick adds</p>
         <p>Budgetkategorier</p>
-        <Category categories={categories} className="fp_categories" />
 
+        <Category categories={categories} />
+
+        <Link to="/addcategory">
+          <img
+            src="../public/img/plus.png"
+            alt="Tilføj kategori"
+            className="fp_addcategory"
+          />
+        </Link>
+
+        <br />
         <Link to="/budget">
           <button className="btn">Budget-siden</button>
         </Link>

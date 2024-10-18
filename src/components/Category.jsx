@@ -1,4 +1,5 @@
 import "../css/Lejla.css";
+import "../css/Sarah.css";
 import { useNavigate } from "react-router-dom";
 
 export default function Category({ categories }) {
@@ -9,7 +10,7 @@ export default function Category({ categories }) {
   };
 
   return (
-    <div className="category-list">
+    <div className="categories">
       {categories.map((category) => (
         <button
           key={category.id}
@@ -17,11 +18,13 @@ export default function Category({ categories }) {
           className="category_btn"
         >
           <div
-            className="category-card"
+            className="category_disp"
             style={{ backgroundColor: category.color }}
           >
-            <p>{category.name}</p>
-            <p>{category.budget} DKK</p>
+            <div className="category_txt">
+              <p>{category.name}</p>
+              <p>{category.budget} DKK</p>
+            </div>
           </div>
         </button>
       ))}
