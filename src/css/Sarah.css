@@ -1,0 +1,42 @@
+/* -------
+FRONT PAGE
+------- */
+
+/* CIRCLE */
+.circle_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 0;
+}
+
+.circle_svg {
+  max-width: 80%;
+  max-height: auto;
+  transform: rotate(-90deg); /* Rotate to make the start point at the top */
+}
+
+.circle_path {
+  fill: none; /* Only outline */
+  stroke-width: 16%;
+  stroke-linecap: round; /* Ends of each segment rounded */
+}
+
+/* TEXT */
+/* Circle and streak text */
+.fp_circle_streak {
+}
+
+/* Circle inner text */
+.fp_circletxt {
+}
+
+/* Streak */
+.fp_streak {
+}
+
+/* ARROWS */
+
+/* CATEGORY CAROUSEL */
+
+/* CATEGORY OVERVIEW */

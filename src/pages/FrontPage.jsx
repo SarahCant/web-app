@@ -27,18 +27,21 @@ export default function FrontPage() {
   }, []);
 
   return (
-    <div>
-      <h1>hej</h1>
-      <p>forsiden</p>
-      {categories.length > 0 && <Circle categories={categories} />}
-
+    <>
+      <h1>Min oversigt</h1>
+      <div className="fp_circle_streak">
+        {categories.length > 0 && <Circle categories={categories} />}
+        <p className="fp_circletxt">
+          TAL <br /> TILBAGE DENNE MÅNED
+        </p>
+        <p className=".fp_streak">Du klarer det så godt!</p>
+      </div>
       <Link to="/budget">
         <button className="btn">Budget-siden</button>
       </Link>
-
       <Link to="/addcategory">
         <button className="btn">Tilføj kategori</button>
       </Link>
-    </div>
+    </>
   );
 }

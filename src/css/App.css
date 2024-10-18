@@ -10,8 +10,12 @@ GENERAL STYLING
   --light: #fefdfb;
 }
 
+/* BODY */
 body {
   background-color: var(--light);
+  width: 90%;
+  margin: auto;
+  margin-top: 7vh;
 }
 
 /* FONTS */
@@ -23,14 +27,18 @@ body {
 
 h1 {
   font-family: "Poppins", sans-serif;
-  font-size: 14vw;
+  font-size: 6vh;
   color: var(--main);
+  font-weight: 100;
+  font-style: normal;
+  padding-left: 6%;
 }
 
 p {
   font-family: "Raleway", sans-serif;
-  font-size: 5.2vw;
+  font-size: 3vh;
   color: var(--dark);
+  font-weight: 100;
 }
 
 /* Buttons */
