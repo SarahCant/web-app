@@ -28,24 +28,16 @@ export default function FrontPage() {
 
   return (
     <div>
-      <h1 className="frontpage_title">hej</h1>
-      <h2>forsiden</h2>
+      <h1>hej</h1>
+      <p>forsiden</p>
       {categories.length > 0 && <Circle categories={categories} />}
 
       <Link to="/budget">
-        <button
-          style={{ padding: "10px 20px", marginTop: "20px", fontSize: "16px" }}
-        >
-          Gå til Budget-siden
-        </button>
+        <button className="btn">Budget-siden</button>
       </Link>
 
       <Link to="/addcategory">
-        <button
-          style={{ padding: "10px 20px", marginTop: "20px", fontSize: "16px" }}
-        >
-          Gå til tilføj kategori
-        </button>
+        <button className="btn">Tilføj kategori</button>
       </Link>
     </div>
   );
