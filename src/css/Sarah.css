@@ -1,38 +1,57 @@
-/* -------
-FRONT PAGE
-------- */
+/* ---------------
+--- COMPONENTS ---
+------------------ */
 
-/* CIRCLE */
+/* --- CIRCLE --- */
 .circle_container {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 4vh 0;
+  transform: scale(1); /* Default scale = full size */
+  transition: transform 1s ease; /* Ensure smooth scaling */
 }
 
 .circle_svg {
-  max-width: 80%;
+  max-width: 95%;
   max-height: auto;
-  transform: rotate(-90deg); /* Rotate to make the start point at the top */
+  transform: rotate(-90deg); /* Starting point = top */
 }
 
 .circle_path {
   fill: none; /* Only outline */
   stroke-width: 16%;
-  stroke-linecap: round; /* Ends of each segment rounded */
+  stroke-linecap: round;
 }
 
+/* ---------------
+----- PAGES ------
+------------------ */
+
+/* --- FRONT PAGE --- */
 /* TEXT */
 /* Circle and streak text */
 .fp_circle_streak {
+  text-align: center;
+  transition: all 0.8s ease; /* For the scroll fade */
 }
 
 /* Circle inner text */
 .fp_circletxt {
+  position: absolute;
+  margin-top: -58vw;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.fp_circlep {
+  font-size: 2.2vh;
 }
 
 /* Streak */
 .fp_streak {
+  transition: opacity 0.8s ease;
 }
 
 /* ARROWS */
@@ -40,3 +59,49 @@ FRONT PAGE
 /* CATEGORY CAROUSEL */
 
 /* CATEGORY OVERVIEW */
+.fp_categories {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2%;
+}
+
+/* SCROLL ANIMATION */
+.fp_circle_streak.scrolled .circle_container {
+  transform: scale(0.5);
+  transition: transform 1s ease;
+}
+
+.fp_circletxt {
+  transition: opacity 0.8s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Fade in everything under streak */
+.fp_hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8 ease;
+}
+
+.fp_hidden.scrolled {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0.8 ease;
+}
+
+.fp_circle_streak.scrolled .fp_circletxt {
+  opacity: 0;
+}
+
+.fp_circle_streak.scrolled .fp_streak {
+  opacity: 0;
+}

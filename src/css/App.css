@@ -6,8 +6,8 @@ GENERAL STYLING
 :root {
   --btn: #7ab9c8;
   --main: #7994b1; /* Menu and h1 blue */
-  --dark: #33333c;
-  --light: #fefdfb;
+  --dark: #33333c; /* p and h2 */
+  --light: #fefdfb; /* bg and btn text */
 }
 
 /* BODY */
@@ -16,6 +16,8 @@ body {
   width: 90%;
   margin: auto;
   margin-top: 7vh;
+  overflow-x: hidden;
+  padding-bottom: 80px;
 }
 
 /* FONTS */
@@ -27,16 +29,22 @@ body {
 
 h1 {
   font-family: "Poppins", sans-serif;
-  font-size: 6vh;
+  font-size: 2.5rem;
   color: var(--main);
   font-weight: 100;
-  font-style: normal;
   padding-left: 6%;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem !important;
+  color: var(--dark) !important;
+  font-weight: 100;
 }
 
 p {
   font-family: "Raleway", sans-serif;
-  font-size: 3vh;
+  font-size: 1.25rem;
   color: var(--dark);
   font-weight: 100;
 }
@@ -48,4 +56,5 @@ p {
   padding: 4vw;
   border-radius: 20px;
   color: var(--light);
+  margin: 10px;
 }
