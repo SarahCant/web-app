@@ -73,6 +73,9 @@ export default function FrontPage() {
         <Link to="/addcategory">
           <button className="btn">Tilføj kategori</button>
         </Link>
+        <Link to="/addexpenses">
+          <button className="btn">Tilføj udgift</button>
+        </Link>
       </div>
     </>
   );
