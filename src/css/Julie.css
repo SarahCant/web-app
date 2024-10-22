@@ -1,51 +1,94 @@
-.menudiv {
-  width: 100%;
-  height: 50px;
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  justify-content: space-between;
-  background-color: #7994b1;
+.menu_div {
+    width: 100%;
+    height: 80px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    background-color: #7994b1;
+    align-items: center;
+    padding: 0 20px;
 }
 
-.hjem_knap {
-  background-color: aqua;
-  height: 100%;
-  width: 30px;
+.menu_knap {
+    text-align: center;
+    flex: 1;
+    transition: background-color 0.3s ease;
 }
 
-.budget_knap {
-  background-color: blueviolet;
-  height: 100%;
-  width: 30px;
+.menu_knap img {
+    width: 30px;
+    height: auto;
+}
+
+.menu_knap p {
+    margin: 0;
+    color: white;
+    font-size: 10px;
 }
 
 .plus_knap {
-  position: absolute;
-  top: -30px; /* For at få cirklen til at stikke halvt ud */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px; /* Diameteren af cirklen */
-  height: 70px;
-  background-color: #7994b1; /* Farve matcher menuen */
-  border-radius: 50%; /* Gør den rund */
-  z-index: 1; /* Sørger for, at den ligger over menulinjen */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: white;
-  font-size: 30px; /* Plus-ikonets størrelse */
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background-color: #7994b1;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    cursor: pointer;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.opsparing_knap {
-  background-color: blueviolet;
-  height: 100%;
-  width: 30px;
+.menu_knap:hover {
+    background-color: #6a83a0;
 }
 
-.profil_knap {
-  background-color: aqua;
-  height: 100%;
-  width: 30px;
+.plus_knap:hover {
+    background-color: #5f7494;
 }
+
+.savings-page {
+    text-align: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .savings-container {
+    margin: 20px;
+  }
+  
+  .form-container {
+    margin: 20px;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  button {
+    padding: 10px;
+    margin: 5px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .savings-image {
+    max-width: 100%; /* Tilpas billedets størrelse */
+    height: auto;
+  }
