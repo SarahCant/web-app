@@ -39,6 +39,11 @@ export default function FrontPage() {
       <Link to="/addcategory">
         <button className="btn">Tilføj kategori</button>
       </Link>
+
+      <Link to="/Profil">
+        <button className="btn">profil</button>
+      </Link>
+
     </div>
   );
 }
