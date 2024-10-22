@@ -6,12 +6,18 @@ GENERAL STYLING
 :root {
   --btn: #7ab9c8;
   --main: #7994b1; /* Menu and h1 blue */
-  --dark: #33333c;
-  --light: #fefdfb;
+  --dark: #33333c; /* p and h2 */
+  --light: #fefdfb; /* bg and btn text */
 }
 
+/* BODY */
 body {
   background-color: var(--light);
+  width: 90%;
+  margin: auto;
+  margin-top: 7vh;
+  overflow-x: hidden;
+  padding-bottom: 80px;
 }
 
 /* FONTS */
@@ -23,14 +29,24 @@ body {
 
 h1 {
   font-family: "Poppins", sans-serif;
-  font-size: 14vw;
+  font-size: 2.5rem;
   color: var(--main);
+  font-weight: 100;
+  padding-left: 6%;
+}
+
+h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem !important;
+  color: var(--dark) !important;
+  font-weight: 100;
 }
 
 p {
   font-family: "Raleway", sans-serif;
-  font-size: 5.2vw;
+  font-size: 1.25rem;
   color: var(--dark);
+  font-weight: 100;
 }
 
 /* Buttons */
@@ -40,4 +56,5 @@ p {
   padding: 4vw;
   border-radius: 20px;
   color: var(--light);
+  margin: 10px;
 }

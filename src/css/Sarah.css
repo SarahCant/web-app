@@ -1,0 +1,212 @@
+/* ---------------
+--- COMPONENTS ---
+------------------ */
+
+/* --- CIRCLE --- */
+.circle_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4vh 0;
+  transform: scale(1); /* Default scale = full size */
+  transition: transform 1s ease; /* Ensure smooth scaling */
+}
+
+.circle_svg {
+  max-width: 95%;
+  max-height: auto;
+  transform: rotate(-90deg); /* Starting point = top */
+}
+
+.circle_path {
+  fill: none; /* Only outline */
+  stroke-width: 16%;
+  stroke-linecap: round;
+}
+
+/* --- CATEGORY --- */
+.categories {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+}
+
+.categories button {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+.category_disp {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 20px;
+}
+
+.category_txt {
+  padding-top: 90%;
+}
+
+.category_txt p {
+  font-size: 100%;
+  padding-top: 20%;
+}
+
+.category_btn {
+  border: none;
+  background: none;
+  padding: 0;
+  width: 100%;
+}
+
+.category_btn.selected {
+  border: 2px solid var(--main);
+  border-radius: 22px;
+  outline: none;
+}
+
+/* ---------------
+----- PAGES ------
+------------------ */
+
+/* --- FRONT PAGE --- */
+/* TEXT */
+/* Circle and streak text */
+.fp_circle_streak {
+  text-align: center;
+  transition: all 0.8s ease; /* For the scroll fade */
+}
+
+/* Circle inner text */
+.fp_circletxt {
+  position: absolute;
+  margin-top: -58vw;
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+}
+
+.fp_circlep {
+  font-size: 2.2vh;
+}
+
+/* Streak */
+.fp_streak {
+  transition: opacity 0.8s ease;
+  position: relative;
+}
+
+.fp_streak img {
+  width: 15%;
+  padding: 1rem;
+}
+
+.fp_streak_days {
+  position: absolute;
+  top: 65%;
+  left: 48.5%;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* ARROWS */
+/* Scroll arrow */
+.fp_scrollarrow {
+  position: fixed;
+  bottom: 6rem;
+  left: 50%;
+  transform: translate(-50%);
+  animation: hop 1.2s infinite ease-in-out;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+  width: 12%;
+}
+
+@keyframes hop {
+  0%,
+  100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, -3rem);
+  }
+}
+
+.scrolled .fp_scrollarrow {
+  opacity: 0;
+  pointer-events: none;
+}
+/* CATEGORY CAROUSEL */
+
+/* CATEGORY OVERVIEW */
+/* Add category */
+.fp_addcategory {
+  background-color: var(--btn);
+  width: 13.5%;
+  padding: 20px;
+  border-radius: 20px;
+  margin-left: 5.5%;
+}
+
+/* SCROLL ANIMATION */
+.fp_circle_streak.scrolled .circle_container {
+  transform: scale(0.5);
+  transition: transform 1s ease;
+}
+
+.fp_circletxt {
+  transition: opacity 0.8s ease;
+}
+
+.fade-in {
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+/* Fade in everything under streak */
+.fp_hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease, visibility 0.8 ease;
+}
+
+.fp_hidden.scrolled {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.8s ease, visibility 0.8 ease;
+}
+
+.fp_circle_streak.scrolled .fp_circletxt {
+  opacity: 0;
+}
+
+.fp_circle_streak.scrolled .fp_streak {
+  opacity: 0;
+}
+
+/* --- ADD EXPENSES --- */
+.ae_main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ae_main p:first-child {
+  padding-bottom: 4%;
+}
+
+.ae_txt {
+  padding-top: 10%;
+}
+.ae_category {
+  width: 85%;
+}

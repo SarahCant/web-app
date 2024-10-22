@@ -9,6 +9,7 @@ import Budget from "./pages/Budget";
 import Profile from "./pages/Profile";
 import AddExpenses from "./pages/AddExpenses";
 import Savings from "./pages/Savings";
+import MakeBudget from "./pages/MakeBudget";
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/profile" element={<Profile />} />
         <Route path="/addexpenses" element={<AddExpenses />} />
         <Route path="/savings" element={<Savings />} />
+        <Route path="/makebudget" element={<MakeBudget />} />
       </Routes>
     </div>
   );
