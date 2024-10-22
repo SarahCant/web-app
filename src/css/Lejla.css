@@ -99,11 +99,7 @@ input[type="number"] {
   border: none;
 }
 
-.category_btn {
-  border: none;
-  /*  border-radius: ;  Match .category-card */
-  /*  width: ;  Match .category-card */
-}
+
 
 .button_budget {
   position: absolute;
