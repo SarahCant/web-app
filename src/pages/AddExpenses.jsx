@@ -94,6 +94,7 @@ export default function AddExpenses() {
   );
 }
  */
+
 import "../css/Sarah.css";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -118,7 +119,7 @@ export default function AddExpenses() {
       const categoryArray = Object.keys(data).map((key) => ({
         id: key,
         ...data[key],
-        remaining: data[key].budget, // Initialize remaining as budget
+        //remaining: data[key].budget - data[key].cost, // remaining = budget - cost
       }));
       setCategories(categoryArray);
     }
@@ -130,7 +131,7 @@ export default function AddExpenses() {
     };
   }, []);
 
-  // Handle form submission
+  // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -143,16 +144,18 @@ export default function AddExpenses() {
     const categoryToUpdate = categories.find(
       (cat) => cat.id === selectedCategory
     );
-    const updatedBudget = categoryToUpdate.budget - parseFloat(cost);
-    const updatedRemaining = categoryToUpdate.remaining - parseFloat(cost);
-
-    // Update Firebase with the new budget and remaining values
+    //const updatedRemaining = categoryToUpdate.remaining - parseFloat(cost);
+    //const updatedRemaining = categoryToUpdate.remaining - parseFloat(cost);
+    const updatedRemaining =
+      parseFloat(categoryToUpdate.remaining || categoryToUpdate.budget) -
+      parseFloat(cost);
+    // Update Firebase with the new remaining value
     await fetch(
       `https://web-app-c295f-default-rtdb.firebaseio.com/category/${selectedCategory}.json`,
       {
         method: "PATCH",
         body: JSON.stringify({
-          budget: updatedBudget,
+          //budget: updatedBudget,
           remaining: updatedRemaining,
         }),
       }

@@ -37,7 +37,7 @@ export default function Category({
   );
 }
  */
-import "../css/Lejla.css";
+
 import "../css/Sarah.css";
 
 export default function Category({
@@ -66,9 +66,11 @@ export default function Category({
             <div className="category_txt">
               <p>{category.name}</p>
               <p>
-                {category.expenses > 0
-                  ? `${category.budget - category.expenses} DKK tilbage`
-                  : `${category.budget} DKK tilbage`}
+                {category.remaining !== null &&
+                category.remaining !== category.budget &&
+                category.remaining !== undefined
+                  ? `${category.remaining}/${category.budget}`
+                  : `${category.budget}/${category.budget}`}
               </p>
             </div>
           </div>

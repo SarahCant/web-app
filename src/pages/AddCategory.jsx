@@ -1,4 +1,4 @@
-/* import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Lejla.css";
 import Category from "../components/Category";
@@ -10,6 +10,8 @@ export default function AddCategory() {
   const [budget, setBudget] = useState("");
   const [color, setColor] = useState("");
   const navigate = useNavigate();
+  const remaining = useState("");
+  const cost = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -17,6 +19,7 @@ export default function AddCategory() {
     let newCategory = {
       name: categoryName,
       budget: budget,
+      remaining: budget - cost,
       color: color,
     };
 
@@ -38,13 +41,13 @@ export default function AddCategory() {
 
       setCategories([...categories, { ...newCategory, id: uniqueId }]);
 
-      navigate("/"); // Ret hvor den navigerer til
+      navigate("/");
     } else {
-      console.error("Kategori ikke opretter", response.statusText);
+      console.error("Kategori ikke oprettet", response.statusText);
     }
   }
 
-  // Liste over farver som i billedet
+  // Liste over farver
   const colors = [
     "#F8E392",
     "#F6A58C",
@@ -125,8 +128,8 @@ export default function AddCategory() {
     </div>
   );
 }
- */
-import { useState, useEffect } from "react";
+
+/* import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Lejla.css";
 import Category from "../components/Category";
@@ -240,3 +243,4 @@ export default function AddCategory() {
     </div>
   );
 }
+ */
