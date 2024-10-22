@@ -105,6 +105,7 @@ export default function FrontPage() {
   );
 }
  */
+
 import "../css/Sarah.css";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
