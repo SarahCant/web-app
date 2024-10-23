@@ -6,36 +6,36 @@ export default function Menu() {
   return (
     <>
       <div className="menu_div">
-    <a href="/FrontPage" className="menu_knap">
-        <div className="icon_text">
+        <a href="/" className="menu_knap">
+          <div className="icon_text">
             <img src="/img/icon_home.png" alt="Forside" />
             <p>Forside</p>
-        </div>
-    </a>
-    <a href="/budget" className="menu_knap">
-        <div className="icon_text">
+          </div>
+        </a>
+        <a href="/budget" className="menu_knap">
+          <div className="icon_text">
             <img src="/img/icon_budget.png" alt="Budget" />
             <p>Budget</p>
-        </div>
-    </a>
-   
-   <a href="/addExpenses">
-    <div className="plus_knap">+</div>
-    </a>
+          </div>
+        </a>
 
-    <a href="/Savings" className="menu_knap">
-        <div className="icon_text">
+        <a href="/addExpenses">
+          <div className="plus_knap">+</div>
+        </a>
+
+        <a href="/Savings" className="menu_knap">
+          <div className="icon_text">
             <img src="/img/icon_savings.png" alt="Opsparing" />
             <p>Opsparing</p>
-        </div>
-    </a>
-    <a href="/profile" className="menu_knap">
-        <div className="icon_text">
+          </div>
+        </a>
+        <a href="/profile" className="menu_knap">
+          <div className="icon_text">
             <img src="/img/icon_profile.png" alt="Profil" />
             <p>Profil</p>
-        </div>
-    </a>
-</div>
+          </div>
+        </a>
+      </div>
     </>
   );
 }
