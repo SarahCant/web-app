@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import ProgressBar from '../components/ProgressBar'; // Komponent til visualisering af fremskridt
-import '../css/Julie.css'; // Styling til denne side (hvis du har en CSS-fil)
+import ProgressBar from '../components/ProgressBar'; 
+import '../css/Julie.css';
+import '../css/App.css';
 
 export default function Savings() {
   // State til at håndtere opsparing og mål
@@ -37,14 +38,15 @@ export default function Savings() {
 
   return (
     <div className="savings-page">
-      <h1>Opsparing</h1>
-      
+      {/* Overskrift flyttes til venstre */}
+      <h1 className="savings-heading">Opsparing</h1>
+  
       {/* Progress visualisering */}
       <div className="savings-container">
         <ProgressBar progress={progress} /> {/* Komponent der viser fremskridtet */}
         <p>Godt gået! Du har opsparet {savings} kr ud af {goal} kr.</p>
       </div>
-
+  
       {/* Formular til at tilføje/fjerne opsparing eller ændre målet */}
       <div className="form-container">
         <input
@@ -53,9 +55,14 @@ export default function Savings() {
           onChange={(e) => setInputValue(e.target.value)}
           placeholder="Indtast beløb"
         />
-        <button onClick={handleAdd}>Indsæt</button>
-        <button onClick={handleRemove}>Fjern</button>
-        <button onClick={handleSetGoal}>Ret mål</button>
+        
+        {/* Knapperne placeres horisontalt i en separat container */}
+        <div className="button-container">
+          <button className='btn' onClick={handleAdd}>Indsæt</button>
+          <button className='btn' onClick={handleRemove}>Fjern</button>
+          <button className='btn' onClick={handleSetGoal}>Ret mål</button>
+       
+        </div>
       </div>
     </div>
   );

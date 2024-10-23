@@ -8,7 +8,10 @@
     justify-content: space-between;
     background-color: #7994b1;
     align-items: center;
-    padding: 0 20px;
+}
+
+.midter_div{
+width: 50px;
 }
 
 .menu_knap {
@@ -19,7 +22,7 @@
 
 .menu_knap img {
     width: auto;
-    height: 30px;
+    height: 25px;
 }
 
 .menu_knap p {
@@ -55,8 +58,18 @@
 }
 
 .savings-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Fyld hele højden af browseren */
     text-align: center;
-    font-family: Arial, sans-serif;
+  }
+  
+  .savings-heading {
+    align-self: flex-start; /* Gør overskriften venstrestillet */
+    margin-left: 0px; /* Tilføjer lidt margen fra venstre kant */
+    margin-top: 170px;
   }
   
   .savings-container {
@@ -64,31 +77,30 @@
   }
   
   .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     margin: 20px;
   }
   
   input {
     padding: 10px;
     margin: 5px;
-    border-radius: 5px;
+    border-radius: 20px;
     border: 1px solid #ccc;
+    width: 250px; /* Fikseret bredde */
+    text-align: center; /* Centrerer tekst i inputfeltet */
   }
   
-  button {
-    padding: 10px;
-    margin: 5px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 100px;
   }
   
   .savings-image {
-    max-width: 100%; /* Tilpas billedets størrelse */
+    max-width: 100%;
     height: auto;
   }
+  
