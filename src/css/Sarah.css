@@ -205,8 +205,18 @@
 }
 
 .ae_txt {
-  padding-top: 10%;
+  padding-top: 3%;
 }
+
 .ae_category {
   width: 85%;
+}
+
+.ae_addquick_btn {
+  background-color: var(--light) !important;
+  border: 2px solid var(--btn);
+  padding: 3vw;
+  border-radius: 20px;
+  color: var(--btn);
+  margin: 10px;
 }
