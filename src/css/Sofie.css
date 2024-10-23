@@ -1,1 +1,99 @@
-/* --- Bar Chart --- */
+/* --- Animation --- */
+.bg_animation {
+  background-color: #e1e9ff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  margin: -7vh -5.5% 0 -5.5%;
+  animation: fade 2s forwards;
+  animation-delay: 3s;
+}
+
+/* Keyframe for the whole bg_animation div */
+@keyframes fade {
+  0% {
+    opacity: 1; /* Fully visible */
+  }
+  100% {
+    opacity: 0; /* Fully visible */
+  }
+}
+
+.logo_animation {
+  width: 80%;
+  margin: 50% 0 12% 0;
+  animation: growWidth 1s ease-in-out forwards,
+    rotateImage 1s ease-in-out forwards; /* Apply the animation */
+  animation-delay: 0.2s;
+  /* Ensure it starts invisible */
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Make it visible after the animation starts */
+.logo_animation.start-visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+@keyframes growWidth {
+  0% {
+    width: 0%; /* Start at 0% */
+    opacity: 0; /* Start invisible */
+  }
+  100% {
+    width: 80%; /* End at 80% */
+    opacity: 1; /* Fully visible */
+  }
+}
+
+@keyframes rotateImage {
+  0% {
+    transform: rotate(0deg); /* Start at 0 degrees */
+  }
+  100% {
+    transform: rotate(360deg); /* End at 360 degrees */
+  }
+}
+
+.logo_rel {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.streak_animation {
+  position: absolute;
+  transform: rotate(140deg);
+  width: 2.5rem;
+  top: 55%;
+  right: 5%;
+  opacity: 0; /* Start hidden (invisible) */
+  animation: streakGrow 1s ease-in-out forwards; /* Apply growth animation */
+  animation-delay: 1.1s; /* Adjust delay to match the duration of logo animations (1.6s) */
+}
+
+@keyframes streakGrow {
+  0% {
+    opacity: 0; /* Fully visible */
+  }
+  100% {
+    opacity: 1; /* Fully visible */
+  }
+}
+
+.h1_animation {
+  padding-left: 0;
+  animation: streakGrow 1s ease-in-out forwards; /* Apply growth animation */
+  animation-delay: 1.1s; /* Adjust delay to match the duration of logo animations (1.6s) */
+  /* Ensure it starts invisible */
+  opacity: 0;
+}
+
+.h1_forside {
+  position: absolute;
+  top: 30%;
+  left: 25%;
+  z-index: -1;
+}
