@@ -8,6 +8,7 @@ GENERAL STYLING
   --main: #7994b1; /* Menu and h1 blue */
   --dark: #33333c; /* p and h2 */
   --light: #fefdfb; /* bg and btn text */
+  --light_gray: #d3d3d3; /* circle unfilled */
 }
 
 /* BODY */
