@@ -114,7 +114,7 @@
 }
 
 /* ARROWS */
-/* Scroll arrow */
+/* Scroll arrow animation */
 .fp_scrollarrow {
   position: fixed;
   bottom: 6rem;
@@ -140,7 +140,7 @@
   opacity: 0;
   pointer-events: none;
 }
-/* CATEGORY CAROUSEL */
+/* QUICKADD CAROUSEL */
 
 /* CATEGORY OVERVIEW */
 /* Add category */
@@ -212,11 +212,40 @@
   width: 85%;
 }
 
-.ae_addquick_btn {
+/* QUICK ADD */
+.ae_quickadd {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 60%;
+  margin: 3% auto;
+}
+
+.ae_quickadd p {
+  padding-top: 6%;
+}
+/* Quickadd btn */
+.ae_quickadd_btn {
   background-color: var(--light) !important;
   border: 2px solid var(--btn);
   padding: 3vw;
   border-radius: 20px;
   color: var(--btn);
   margin: 10px;
+}
+
+/* Quickadd hidden content */
+.ae_quickadd_content {
+  max-height: 0; /* Start collapsed */
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+.ae_quickadd_content.visible {
+  max-height: 60%;
+}
+
+.ae_quickadd.active {
+  background-color: var(--btn); /* Add bg color when unfolded */
 }
