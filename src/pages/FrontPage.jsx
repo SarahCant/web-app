@@ -178,25 +178,6 @@ export default function FrontPage() {
         <p>Budgetkategorier</p>
 
         <Category categories={categories} />
-
-        <Link to="/addcategory">
-          <img
-            src="../public/img/plus.png"
-            alt="Tilføj kategori"
-            className="fp_addcategory"
-          />
-        </Link>
-
-        <br />
-        <Link to="/budget">
-          <button className="btn">Budget-siden</button>
-        </Link>
-        <Link to="/addcategory">
-          <button className="btn">Tilføj kategori</button>
-        </Link>
-        <Link to="/addexpenses">
-          <button className="btn">Tilføj udgift</button>
-        </Link>
       </div>
 
       {showArrow && !isScrolled && (
