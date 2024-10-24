@@ -2,6 +2,7 @@ import "../css/Sarah.css";
 import { useState, useEffect } from "react";
 import Circle from "../components/Circle";
 import Category from "../components/Category";
+import QuickAddGallery from "../components/QuickAddGallery";
 
 export default function FrontPage() {
   const [categories, setCategories] = useState([]);
@@ -65,7 +66,9 @@ export default function FrontPage() {
       </div>
 
       <div className={`fp_hidden ${isScrolled ? "scrolled" : ""}`}>
-        <p>Quick adds</p>
+        <p>Quickadds</p>
+        <QuickAddGallery />
+
         <p>Budgetkategorier</p>
 
         <Category categories={categories} />

@@ -37,6 +37,7 @@
   height: 100%;
   border: none;
 }
+
 .category_disp {
   display: flex;
   justify-content: center;
@@ -48,7 +49,7 @@
 }
 
 .category_txt {
-  padding-top: 90%;
+  margin-top: 90%;
 }
 
 .category_txt p {
@@ -67,6 +68,57 @@
   border: 2px solid var(--main);
   border-radius: 22px;
   outline: none;
+}
+
+/* QUICKADD GALLERY */
+/* .quickadd_gallery {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  padding: 20px;
+  width: 100%;
+
+}
+
+.quickadd_item {
+  min-width: calc(33.33% - 20px); 
+  flex: 0 0 auto; 
+  scroll-snap-align: start;
+  background-color: var(--light);
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.quickadd_item:last-child {
+  background-color: var(--btn); 
+} */
+
+.quickadd-gallery {
+  display: flex;
+  gap: 20px;
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  width: 100%;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.quickadd-gallery p {
+  font-size: 100%;
+}
+
+.quickadd-items {
+  display: flex;
+  flex-direction: row;
+}
+
+.quickadd-item {
+  min-width: calc(20vw - 20px);
+  margin: 10px;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 /* ---------------
@@ -140,7 +192,6 @@
   opacity: 0;
   pointer-events: none;
 }
-/* QUICKADD CAROUSEL */
 
 /* CATEGORY OVERVIEW */
 /* Add category */
