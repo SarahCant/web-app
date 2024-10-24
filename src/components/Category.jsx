@@ -64,45 +64,48 @@ export default function Category({
   }
 
   return (
-    <div className="categories">
-      {categories.map((category) => {
-        const spent = category.budget - (category.remaining || category.budget);
-        const spentRatio = spent / category.budget;
+    <>
+      <div className="categories">
+        {categories.map((category) => {
+          const spent =
+            category.budget - (category.remaining || category.budget);
+          const spentRatio = spent / category.budget;
 
-        return (
-          <button
-            key={category.id}
-            onClick={() => handleCategoryClick(category.id)}
-            className={`category_btn ${
-              selectedCategory === category.id ? "selected" : ""
-            }`}
-          >
-            <div
-              className="category_disp"
-              style={{ backgroundColor: getLighterColor(category.color) }}
+          return (
+            <button
+              key={category.id}
+              onClick={() => handleCategoryClick(category.id)}
+              className={`category_btn ${
+                selectedCategory === category.id ? "selected" : ""
+              }`}
             >
               <div
-                className="category_fill"
-                style={{
-                  backgroundColor: category.color,
-                  height: `${spentRatio * 100}%`,
-                }}
-              />
-              <div className="category_txt">
-                <p>{category.name}</p>
-                <p>
-                  {category.remaining !== null &&
-                  category.remaining !== category.budget &&
-                  category.remaining !== undefined
-                    ? `${category.remaining}/${category.budget}`
-                    : `${category.budget}/${category.budget}`}
-                </p>
+                className="category_disp"
+                style={{ backgroundColor: getLighterColor(category.color) }}
+              >
+                <div
+                  className="category_fill"
+                  style={{
+                    backgroundColor: category.color,
+                    height: `${spentRatio * 100}%`,
+                  }}
+                />
+                <div className="category_txt">
+                  <p>{category.name}</p>
+                  <p>
+                    {category.remaining !== null &&
+                    category.remaining !== category.budget &&
+                    category.remaining !== undefined
+                      ? `${category.remaining}/${category.budget}`
+                      : `${category.budget}/${category.budget}`}
+                  </p>
+                </div>
               </div>
-            </div>
-          </button>
-        );
-      })}
-    </div>
+            </button>
+          );
+        })}
+      </div>
+    </>
   );
 }
 /*
