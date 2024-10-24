@@ -8,6 +8,7 @@ export default function FrontPage() {
   const [categories, setCategories] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showArrow, setShowArrow] = useState(false);
+  const [remainingBudget, setRemainingBudget] = useState(0); //to store remaining budget
 
   useEffect(() => {
     async function fetchCategories() {
@@ -21,6 +22,7 @@ export default function FrontPage() {
           ...data[key],
         }));
         setCategories(categoryArray);
+        calculateRemainingBudget(categoryArray); // calculate budget after fetching categories
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -47,15 +49,47 @@ export default function FrontPage() {
     };
   }, []);
 
+  //calculate total remaining budget
+  const calculateRemainingBudget = (categories) => {
+    const totalRemaining = categories.reduce(
+      (acc, category) => acc + (category.remaining || category.budget),
+      0
+    );
+    setRemainingBudget(totalRemaining);
+  };
+
+  //get current month
+  const getCurrentMonth = () => {
+    const months = [
+      "JANUAR",
+      "FEBRUAR",
+      "MARTS",
+      "APRIL",
+      "MAJ",
+      "JUNI",
+      "JULI",
+      "AUGUST",
+      "SEPTEMBER",
+      "OKTOBER",
+      "NOVEMBER",
+      "DECEMBER",
+    ];
+    const currentMonthIndex = new Date().getMonth();
+    return months[currentMonthIndex];
+  };
+
   return (
     <>
       <h1>Min oversigt</h1>
       <div className={`fp_circle_streak ${isScrolled ? "scrolled" : ""}`}>
-        {categories.length > 0 && <Circle categories={categories} />}
+        {categories.length > 0 && <Circle categories={categories} />}{" "}
+        {/* display remaining budget */}
         <section className="fp_circletxt">
-          <h2 className={isScrolled ? "fade-out" : "fade-in"}>TAL</h2>
+          <h2 className={isScrolled ? "fade-out" : "fade-in"}>
+            {remainingBudget} DKK
+          </h2>
           <p className={`fp_circlep ${isScrolled ? "fade-out" : "fade-in"}`}>
-            TILBAGE DENNE MÅNED
+            TILBAGE I {getCurrentMonth()} {/* display current month */}
           </p>
         </section>
         <section className={`fp_streak ${isScrolled ? "fade-out" : "fade-in"}`}>
@@ -66,7 +100,7 @@ export default function FrontPage() {
       </div>
 
       <div className={`fp_hidden ${isScrolled ? "scrolled" : ""}`}>
-        <p>Quickadds</p>
+        <p>Quick adds</p>
         <QuickAddGallery />
 
         <p>Budgetkategorier</p>

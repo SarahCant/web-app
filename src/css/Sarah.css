@@ -55,7 +55,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  transition: height 0.3s ease; /* Optional: adds a smooth transition effect */
+  transition: height 0.3s ease;
 }
 
 .category_txt {
@@ -90,31 +90,7 @@
 }
 
 /* QUICKADD GALLERY */
-/* .quickadd_gallery {
-  display: flex;
-  gap: 20px;
-  overflow-x: scroll;
-  scroll-snap-type: x mandatory;
-  padding: 20px;
-  width: 100%;
-
-}
-
-.quickadd_item {
-  min-width: calc(33.33% - 20px); 
-  flex: 0 0 auto; 
-  scroll-snap-align: start;
-  background-color: var(--light);
-  padding: 15px;
-  border-radius: 10px;
-  text-align: center;
-}
-
-.quickadd_item:last-child {
-  background-color: var(--btn); 
-} */
-
-.quickadd-gallery {
+.quickadd_gallery {
   display: flex;
   gap: 20px;
   overflow-x: scroll;
@@ -124,20 +100,38 @@
   font-family: "Raleway", sans-serif;
 }
 
-.quickadd-gallery p {
-  font-size: 100%;
+.quickadd_gallery p {
+  font-size: 85%;
 }
 
-.quickadd-items {
+.quickadd_items {
   display: flex;
   flex-direction: row;
 }
 
-.quickadd-item {
-  min-width: calc(20vw - 20px);
+.quickadd_item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: calc(18vw - 20px);
+  height: calc(18vw - 20px);
   margin: 10px;
   padding: 20px;
   border-radius: 20px;
+}
+
+.quickadd_gallery p:nth-child(2) {
+  margin-top: auto;
+}
+
+.quickadd_add {
+  color: var(--light);
+  line-height: normal;
+  text-wrap: nowrap;
+  font-weight: bold;
+  margin-left: -8%;
+  margin-bottom: 8%;
+  line-height: 140%;
 }
 
 /* ---------------
@@ -290,14 +284,18 @@
   text-align: center;
   width: 60%;
   margin: 3% auto;
+  transition: background-color 0.3s ease-in-out;
+  border-radius: 20px;
 }
 
 .ae_quickadd p {
   padding-top: 6%;
+  color: var(--light);
 }
+
 /* Quickadd btn */
 .ae_quickadd_btn {
-  background-color: var(--light) !important;
+  background-color: var(--light);
   border: 2px solid var(--btn);
   padding: 3vw;
   border-radius: 20px;
@@ -307,15 +305,28 @@
 
 /* Quickadd hidden content */
 .ae_quickadd_content {
-  max-height: 0; /* Start collapsed */
+  max-height: 0; /* start collapsed */
   overflow: hidden;
-  transition: max-height 0.5s ease-in-out;
+  transition: max-height 0.15s ease-in-out;
 }
 
 .ae_quickadd_content.visible {
   max-height: 60%;
+  transition: max-height 0.2s ease-in-out;
 }
 
 .ae_quickadd.active {
-  background-color: var(--btn); /* Add bg color when unfolded */
+  background-color: var(--btn); /*  bg when unfolded */
+}
+
+.bg_btn {
+  background-color: var(--btn); /* when visible */
+}
+
+.bg_light {
+  background-color: var(--light); /* default bg */
+}
+.ae_quickadd_btn.active {
+  background-color: var(--btn);
+  color: var(--light);
 }
