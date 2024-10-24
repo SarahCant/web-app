@@ -1,22 +1,21 @@
 import "../css/Sofie.css";
 
 export default function BarChart({ data }) {
-  const svgWidth = 400;
-  const svgHeight = 250;
-  const margin = { top: 20, right: 60, bottom: 30, left: 20 };
-  const width = svgWidth - margin.left - margin.right;
-  const height = svgHeight - margin.top - margin.bottom;
+  const margin = { top: 20, right: 20, bottom: 30, left: 30 };
+  const width = 350 - margin.left - margin.right; // 350 is a default width
+  const height = 250 - margin.top - margin.bottom; // 250 is a default height
 
   const maxBudget = Math.max(...data.map((d) => d.budget));
   const yScale = (value) => height - (value / maxBudget) * height;
 
   const barWidth = (width / data.length) * 0.8;
   const barGap = (width / data.length) * 0.2;
-  const cornerRadius = 25;
+  const cornerRadius = 20;
 
   // Threshold for what we consider a "very small" spent amount
-  const smallSpentThreshold = 5; // 5% of the budget
+  const smallSpentThreshold = 5;
 
+  // Rounds of the tops of the bars
   function roundedTopBarPath(x, y, width, height, radius) {
     return `
       M ${x},${y + height}
@@ -29,8 +28,8 @@ export default function BarChart({ data }) {
     `;
   }
 
+  // Converts hex to RGB and then increases lightness
   function getLighterColor(color) {
-    // Convert hex to RGB, then increase lightness
     let r = parseInt(color.slice(1, 3), 16);
     let g = parseInt(color.slice(3, 5), 16);
     let b = parseInt(color.slice(5, 7), 16);
@@ -44,75 +43,67 @@ export default function BarChart({ data }) {
       .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
   }
 
-  const yAxis = () => {
-    const ticks = 5;
-    return Array.from({ length: ticks }, (_, i) => (
-      <g key={i} transform={`translate(0, ${(i * height) / (ticks - 1)})`}></g>
-    ));
-  };
-
   return (
-    <svg width={svgWidth} height={svgHeight}>
-      <g transform={`translate(${margin.left}, ${margin.top})`}>
-        {yAxis()}
-        {data.map((item, index) => {
-          const spent = item.budget - (item.remaining || item.budget);
-          const spentRatio = spent / item.budget;
-          const isVerySmallSpent =
-            spentRatio > 0 && spentRatio < smallSpentThreshold;
-          return (
-            <g
-              key={item.id}
-              transform={`translate(${index * (barWidth + barGap)}, 0)`}
-            >
-              {/* Outer bar (total budget) - lighter color */}
-              <path
-                d={roundedTopBarPath(
-                  0,
-                  yScale(item.budget),
-                  barWidth,
-                  height - yScale(item.budget),
-                  cornerRadius
-                )}
-                fill={getLighterColor(item.color || "#E0E0E0")}
-              />
-              {/* Inner bar (spent amount) - only if spent > 0 */}
-              {spent > 0 && (
+    <div>
+      <svg
+        className="placement_txt_barchart"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox={`0 0 350 250`}
+      >
+        <g transform={`translate(${margin.left}, ${margin.top})`}>
+          {data.map((item, index) => {
+            const spent = item.budget - (item.remaining || item.budget);
+            const spentRatio = spent / item.budget;
+            const isVerySmallSpent =
+              spentRatio > 0 && spentRatio < smallSpentThreshold;
+            return (
+              <g
+                key={item.id}
+                transform={`translate(${index * (barWidth + barGap)}, 0)`}
+              >
+                {/* Outer bar (total budget) - lighter color */}
                 <path
                   d={roundedTopBarPath(
                     0,
-                    yScale(spent),
+                    yScale(item.budget),
                     barWidth,
-                    height - yScale(spent),
+                    height - yScale(item.budget),
                     cornerRadius
                   )}
-                  fill={item.color || "#4CAF50"}
+                  fill={getLighterColor(item.color || "#E0E0E0")}
                 />
-              )}
-              {/* White rectangle to cover very small spent amounts */}
-              {isVerySmallSpent && (
-                <rect
-                  x={-1}
-                  y={height + 0.1} // Position it just above the bottom
-                  width={barWidth + 2}
-                  height={50} // Make it thin
-                  fill="#fefdfb"
-                />
-              )}
-              {/* Category name */}
-              <text
-                x={barWidth / 2}
-                y={height + 15}
-                textAnchor="middle"
-                fontSize="12"
-                fontFamily="sans-serif"
-              >
-                {item.name}
-              </text>
-            </g>
-          );
-        })}
-      </g>
-    </svg>
+                {/* Inner bar (spent amount) - only if spent > 0 */}
+                {spent > 0 && (
+                  <path
+                    d={roundedTopBarPath(
+                      0,
+                      yScale(spent),
+                      barWidth,
+                      height - yScale(spent),
+                      cornerRadius
+                    )}
+                    fill={item.color || "#4CAF50"}
+                  />
+                )}
+                {/* White rectangle to cover very small spent amounts */}
+                {isVerySmallSpent && (
+                  <rect
+                    x={-1}
+                    y={height + 0.1} // Position it just above the bottom
+                    width={barWidth + 2}
+                    height={50} // Make it thin
+                    fill="#fefdfb"
+                  />
+                )}
+                {/* Category name */}
+                <text x={barWidth / 2} y={height + 15} textAnchor="middle">
+                  {item.name}
+                </text>
+              </g>
+            );
+          })}
+        </g>
+      </svg>
+    </div>
   );
 }
