@@ -89,53 +89,6 @@
   outline: none;
 }
 
-/* --- CATEGORY --- */
-/*
-.categories {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 20px;
-}
-
-.categories button {
-  width: 100%;
-  height: 100%;
-  border: none;
-}
-
-.category_disp {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 0;
-  padding-bottom: 100%;
-  border-radius: 20px;
-}
-
-.category_txt {
-  margin-top: 90%;
-}
-
-.category_txt p {
-  font-size: 100%;
-  padding-top: 20%;
-}
-
-.category_btn {
-  border: none;
-  background: none;
-  padding: 0;
-  width: 100%;
-}
-
-.category_btn.selected {
-  border: 2px solid var(--main);
-  border-radius: 22px;
-  outline: none;
-}
-*/
 /* QUICKADD GALLERY */
 /* .quickadd_gallery {
   display: flex;

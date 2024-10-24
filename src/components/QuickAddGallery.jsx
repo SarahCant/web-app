@@ -263,7 +263,7 @@ export default function QuickAddGallery() {
           style={{ backgroundColor: "var(--btn)" }} // Make sure this variable is defined in your CSS
           onClick={() => navigate("/addexpenses")}
         >
-          <h3>Tilføj quickadd</h3>
+          <p>Tilføj quickadd</p>
         </div>
       </div>
     </div>
