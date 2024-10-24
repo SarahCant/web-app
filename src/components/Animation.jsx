@@ -15,7 +15,6 @@ export default function Animation() {
 
   return (
     <div>
-      <h1 className="h1_forside">Forside</h1>
       <div className="bg_animation">
         <div className="logo_rel">
           <img

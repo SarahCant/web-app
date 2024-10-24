@@ -2,8 +2,8 @@ import "../css/Sofie.css";
 
 export default function BarChart({ data }) {
   const svgWidth = 400;
-  const svgHeight = 300;
-  const margin = { top: 20, right: 20, bottom: 30, left: 20 };
+  const svgHeight = 250;
+  const margin = { top: 20, right: 60, bottom: 30, left: 20 };
   const width = svgWidth - margin.left - margin.right;
   const height = svgHeight - margin.top - margin.bottom;
 
