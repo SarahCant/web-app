@@ -14,6 +14,9 @@ export default function BarChart({ data }) {
   const barGap = (width / data.length) * 0.2;
   const cornerRadius = 25;
 
+  // Threshold for what we consider a "very small" spent amount
+  const smallSpentThreshold = 5; // 5% of the budget
+
   function roundedTopBarPath(x, y, width, height, radius) {
     return `
       M ${x},${y + height}
@@ -54,6 +57,9 @@ export default function BarChart({ data }) {
         {yAxis()}
         {data.map((item, index) => {
           const spent = item.budget - (item.remaining || item.budget);
+          const spentRatio = spent / item.budget;
+          const isVerySmallSpent =
+            spentRatio > 0 && spentRatio < smallSpentThreshold;
           return (
             <g
               key={item.id}
@@ -81,6 +87,16 @@ export default function BarChart({ data }) {
                     cornerRadius
                   )}
                   fill={item.color || "#4CAF50"}
+                />
+              )}
+              {/* White rectangle to cover very small spent amounts */}
+              {isVerySmallSpent && (
+                <rect
+                  x={-1}
+                  y={height + 0.1} // Position it just above the bottom
+                  width={barWidth + 2}
+                  height={50} // Make it thin
+                  fill="#fefdfb"
                 />
               )}
               {/* Category name */}
