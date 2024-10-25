@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../css/Sarah.css";
+import '../css/Julie.css';
 
 export default function MakeBudget() {
   const [income, setIncome] = useState("");

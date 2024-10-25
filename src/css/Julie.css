@@ -77,6 +77,8 @@
   margin: 20px;
 }
 
+/*MakeBudget*/
+
 .form-container {
   display: flex;
   flex-direction: column;
@@ -104,3 +106,55 @@ input {
   max-width: 100%;
   height: auto;
 }
+
+.makebudget_main {
+    background-color: #f9f9f9;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 400px;
+    text-align: center;
+    border-radius: 8px;
+  }
+  
+  .makebudget_main h1 {
+    font-size: 2em;
+    color: #5a7384;
+    text-align: left; /* Venstrestiller overskriften */
+    
+  }
+  
+  .input-group {
+    margin-bottom: 20px;
+  }
+  
+  .input-group input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    border-radius: 25px;
+    border: 1px solid #c9c9c9;
+    box-sizing: border-box;
+    background-color: #f1f8fa;
+    text-align: center;
+  }
+  
+  .budget_display {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 20px 0;
+    color: black;
+  }
+  
+  .fp_addcategory {
+    width: 60px;
+    margin: 20px 0;
+  }
+  
+  .fp_addcategory img {
+    width: 100%;
+  }
+  
+  p {
+    font-size: 1.2em;
+    color: #333;
+  }
