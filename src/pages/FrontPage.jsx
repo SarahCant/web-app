@@ -1,33 +1,34 @@
 import "../css/Sarah.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Circle from "../components/Circle";
 import Category from "../components/Category";
 import QuickAddGallery from "../components/QuickAddGallery";
+import { database } from "/firebaseConfig";
+import { ref, onValue, update } from "firebase/database";
 
 export default function FrontPage() {
   const [categories, setCategories] = useState([]);
   const [isScrolled, setIsScrolled] = useState(false);
   const [showArrow, setShowArrow] = useState(false);
-  const [remainingBudget, setRemainingBudget] = useState(0); //to store remaining budget
+  const [remainingBudget, setRemainingBudget] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
-  useEffect(() => {
-    async function fetchCategories() {
-      try {
-        const response = await fetch(
-          "https://web-app-c295f-default-rtdb.firebaseio.com/category.json"
-        );
-        const data = await response.json();
+  const fetchCategories = useCallback(() => {
+    const categoryRef = ref(database, "category");
+    onValue(categoryRef, (snapshot) => {
+      const data = snapshot.val();
+      if (data) {
         const categoryArray = Object.keys(data).map((key) => ({
           id: key,
           ...data[key],
         }));
         setCategories(categoryArray);
-        calculateRemainingBudget(categoryArray); // calculate budget after fetching categories
-      } catch (error) {
-        console.error("Error fetching categories:", error);
+        calculateRemainingBudget(categoryArray);
       }
-    }
+    });
+  }, []);
 
+  useEffect(() => {
     fetchCategories();
 
     const arrowTimer = setTimeout(() => {
@@ -47,18 +48,37 @@ export default function FrontPage() {
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(arrowTimer);
     };
-  }, []);
+  }, [fetchCategories]);
 
-  //calculate total remaining budget
   const calculateRemainingBudget = (categories) => {
     const totalRemaining = categories.reduce(
-      (acc, category) => acc + (category.remaining || category.budget),
+      (acc, category) =>
+        acc + parseFloat(category.remaining || category.budget),
       0
     );
-    setRemainingBudget(totalRemaining);
+    setRemainingBudget(totalRemaining.toFixed(2));
   };
 
-  //get current month
+  const handleCategoryUpdate = useCallback(
+    (categoryId, newRemaining) => {
+      console.log(
+        `Updating category ${categoryId} with new remaining: ${newRemaining}`
+      );
+      const categoryRef = ref(database, `category/${categoryId}`);
+      update(categoryRef, { remaining: newRemaining })
+        .then(() => {
+          console.log(
+            `Successfully updated category ${categoryId} in Firebase`
+          );
+          fetchCategories(); // Refetch categories to update the UI
+        })
+        .catch((error) => {
+          console.error("Error updating category in Firebase:", error);
+        });
+    },
+    [fetchCategories]
+  );
+
   const getCurrentMonth = () => {
     const months = [
       "JANUAR",
@@ -82,14 +102,13 @@ export default function FrontPage() {
     <>
       <h1>Min oversigt</h1>
       <div className={`fp_circle_streak ${isScrolled ? "scrolled" : ""}`}>
-        {categories.length > 0 && <Circle categories={categories} />}{" "}
-        {/* display remaining budget */}
+        {categories.length > 0 && <Circle categories={categories} />}
         <section className="fp_circletxt">
           <h2 className={isScrolled ? "fade-out" : "fade-in"}>
             {remainingBudget} DKK
           </h2>
           <p className={`fp_circlep ${isScrolled ? "fade-out" : "fade-in"}`}>
-            TILBAGE I {getCurrentMonth()} {/* display current month */}
+            TILBAGE I {getCurrentMonth()}
           </p>
         </section>
         <section className={`fp_streak ${isScrolled ? "fade-out" : "fade-in"}`}>
@@ -101,11 +120,15 @@ export default function FrontPage() {
 
       <div className={`fp_hidden ${isScrolled ? "scrolled" : ""}`}>
         <p>Quick adds</p>
-        <QuickAddGallery />
+        <QuickAddGallery onCategoryUpdate={handleCategoryUpdate} />
 
         <p>Budgetkategorier</p>
 
-        <Category categories={categories} />
+        <Category
+          categories={categories}
+          selectedCategory={selectedCategory}
+          onSelectCategory={setSelectedCategory}
+        />
       </div>
 
       {showArrow && !isScrolled && (
