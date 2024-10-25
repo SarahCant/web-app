@@ -105,19 +105,15 @@
   margin-top: 10%;
   margin-bottom: 5%;
   font-family: "Raleway", sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   color: var(--dark);
   font-weight: 100;
+  background-color: #fbe9e9;
+  border-radius: 30px;
 }
 
-/* New styles for the container */
-.categories-container {
-  display: contents; /* This allows the grid to flow naturally */
-}
-
-/* Style for the Add Category button */
-.fp_addcategory-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.fp_addcategory_flex {
+  text-align: center;
+  margin-left: -5.5%;
+  margin-top: 2%;
 }

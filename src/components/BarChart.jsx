@@ -1,16 +1,27 @@
 import "../css/Sofie.css";
 
 export default function BarChart({ data }) {
-  const margin = { top: 20, right: 20, bottom: 30, left: 30 };
+  const margin = { top: 20, right: 0, bottom: 30, left: 0 };
   const width = 350 - margin.left - margin.right; // 350 is a default width
   const height = 250 - margin.top - margin.bottom; // 250 is a default height
+
+  // Set the maximum number of bars at full width
+  const maxBars = 9;
 
   const maxBudget = Math.max(...data.map((d) => d.budget));
   const yScale = (value) => height - (value / maxBudget) * height;
 
-  const barWidth = (width / data.length) * 0.8;
-  const barGap = (width / data.length) * 0.2;
-  const cornerRadius = 20;
+  // Calculate bar width based on maxBars
+  const idealBarWidth = (width / maxBars) * 0.8;
+  const idealBarGap = (width / maxBars) * 0.2;
+
+  // Adjust bar width if there are more than maxBars
+  const barWidth =
+    data.length > maxBars ? (width / data.length) * 0.8 : idealBarWidth;
+  const barGap =
+    data.length > maxBars ? (width / data.length) * 0.2 : idealBarGap;
+
+  const cornerRadius = Math.min(20, barWidth / 2); // Ensure corner radius isn't larger than half the bar width
 
   // Threshold for what we consider a "very small" spent amount
   const smallSpentThreshold = 5;
@@ -43,6 +54,12 @@ export default function BarChart({ data }) {
       .padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
   }
 
+  // Calculate the total width of all bars and gaps
+  const totalWidth = data.length * (barWidth + barGap);
+
+  // Calculate the offset to center the bars if there are fewer than maxBars
+  const offsetX = data.length < maxBars ? (width - totalWidth) / 2 : 0;
+
   return (
     <div>
       <svg
@@ -50,7 +67,7 @@ export default function BarChart({ data }) {
         preserveAspectRatio="xMidYMid meet"
         viewBox={`0 0 350 250`}
       >
-        <g transform={`translate(${margin.left}, ${margin.top})`}>
+        <g transform={`translate(${margin.left + offsetX}, ${margin.top})`}>
           {data.map((item, index) => {
             const spent = item.budget - (item.remaining || item.budget);
             const spentRatio = spent / item.budget;
@@ -92,7 +109,7 @@ export default function BarChart({ data }) {
                     y={height + 0.1} // Position it just above the bottom
                     width={barWidth + 2}
                     height={50} // Make it thin
-                    fill="#fefdfb"
+                    fill="#FBE9E9"
                   />
                 )}
                 {/* Category name */}

@@ -31,14 +31,15 @@ export default function MyBudget() {
       <h1>Mit budget</h1>
       <BarChart data={categories} />
       <Category categories={categories} />
-      <Link to="/addcategory">
-        <img
-          src="../public/img/plus.png"
-          alt="Tilføj kategori"
-          className="fp_addcategory"
-        />
-      </Link>
-      <button className="btn">Ret budget?</button>
+      <div className="fp_addcategory_flex">
+        <Link to="/addcategory">
+          <img
+            src="../public/img/plus.png"
+            alt="Tilføj kategori"
+            className="fp_addcategory"
+          />
+        </Link>
+      </div>
     </>
   );
 }
