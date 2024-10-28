@@ -40,10 +40,6 @@ export default function UpdateCategory() {
     navigate(-1);
   };
 
-  function navigateToUpdate() {
-    navigate(`/updatecategory/${params.id}/update`);
-  }
-
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -128,8 +124,6 @@ export default function UpdateCategory() {
         </div>
         <button>Gem ændringer</button>
       </form>
-
-      <button onClick={navigateToUpdate}>Ret i kategori</button>
 
       <button onClick={handleDelete}>Slet kategori</button>
     </div>
