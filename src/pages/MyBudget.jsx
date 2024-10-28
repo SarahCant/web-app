@@ -5,6 +5,7 @@ import BarChart from "../components/BarChart";
 
 export default function MyBudget() {
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   useEffect(() => {
     async function fetchCategories() {
@@ -30,7 +31,11 @@ export default function MyBudget() {
     <>
       <h1>Mit budget</h1>
       <BarChart data={categories} />
-      <Category categories={categories} />
+      <Category
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelectCategory={setSelectedCategory}
+      />
       <div className="fp_addcategory_flex">
         <Link to="/addcategory">
           <img
