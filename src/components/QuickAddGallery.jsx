@@ -48,6 +48,17 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
           );
 
           onCategoryUpdate(categoryId, updatedRemaining);
+
+          // trigger border effect
+          const clickedItem = document.getElementById(
+            `quickadd-${quickAdd.id}`
+          );
+          clickedItem.classList.add("clicked");
+
+          // remove 'clicked' class after CSS border animation
+          setTimeout(() => {
+            clickedItem.classList.remove("clicked");
+          }, 500);
         } else {
           console.error(`No category data found for ID: ${categoryId}`);
         }
@@ -81,6 +92,7 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
           quickAdds.map((quickAdd) => (
             <div
               key={quickAdd.id}
+              id={`quickadd-${quickAdd.id}`}
               className="quickadd_item"
               style={{ backgroundColor: quickAdd.color || "#fff" }}
               onClick={() => handleQuickAddClick(quickAdd)}

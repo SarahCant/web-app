@@ -6,10 +6,11 @@ import { database } from "/firebaseConfig";
 export default function Quickadd() {
   const [quickadds, setQuickadds] = useState([]);
   const [categories, setCategories] = useState({});
-  const [loading, setLoading] = useState(true); // New loading state
+  const [loading, setLoading] = useState(true);
+  const [clickedButtonId, setClickedButtonId] = useState(null);
 
   useEffect(() => {
-    // Fetch quick adds
+    // fetch quick adds
     const quickaddRef = ref(database, "quickadds");
     onValue(quickaddRef, (snapshot) => {
       const data = snapshot.val();
@@ -24,7 +25,7 @@ export default function Quickadd() {
       }
     });
 
-    // Fetch categories
+    // fetch categories
     const categoryRef = ref(database, "categories");
     onValue(categoryRef, (snapshot) => {
       const data = snapshot.val();
@@ -33,27 +34,25 @@ export default function Quickadd() {
           acc[key] = {
             id: key,
             ...data[key],
-            remaining: parseFloat(data[key].remaining) || 0, // Ensure remaining is a number
+            remaining: parseFloat(data[key].remaining) || 0,
           };
           return acc;
         }, {});
         setCategories(formattedCategories);
-        console.log("Loaded categories:", formattedCategories); // Log loaded categories
+        console.log("Loaded categories:", formattedCategories);
       } else {
         console.warn("No categories found");
       }
-      setLoading(false); // Set loading to false after data is fetched
+      setLoading(false);
     });
   }, []);
 
-  // Handle the quick add button click
   const handleQuickAdd = async (quickadd) => {
-    if (loading) return; // Prevent handling quick adds until data is loaded
+    if (loading) return;
 
-    const categoryId = quickadd.category; // Get the category ID from the quickadd
-    const cost = parseFloat(quickadd.cost); // Ensure the cost is a number
+    const categoryId = quickadd.category;
+    const cost = parseFloat(quickadd.cost);
 
-    // Fetch current category data
     const categoryData = categories[categoryId];
     if (categoryData) {
       const updatedRemaining = (categoryData.remaining - cost).toFixed(2);
@@ -72,12 +71,16 @@ export default function Quickadd() {
             remaining: parseFloat(updatedRemaining),
           },
         }));
+
+        // add clicked class for animation
+        setClickedButtonId(quickadd.id);
+        setTimeout(() => setClickedButtonId(null), 500); // remove class after animation duration
       } catch (error) {
         console.error("Error updating category:", error);
       }
     } else {
       console.error(`No category data found for ID: ${categoryId}`);
-      console.log("Available categories:", categories); // Log available categories for debugging
+      console.log("Available categories:", categories);
     }
   };
 
@@ -86,7 +89,9 @@ export default function Quickadd() {
       {quickadds.map((quickadd) => (
         <div key={quickadd.id} className="quickadd-item">
           <button
-            className="category_btn"
+            className={`category_btn ${
+              clickedButtonId === quickadd.id ? "clicked" : ""
+            }`}
             onClick={() => handleQuickAdd(quickadd)}
           >
             <div

@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 4vh 0;
+  padding: 2vh 0; /* was 4vh 0 */
   transform: scale(1); /* Default scale = full size */
   transition: transform 1s ease; /* Ensure smooth scaling */
 }
@@ -118,6 +118,7 @@
   margin: 10px;
   padding: 20px;
   border-radius: 20px;
+  border: 2px solid transparent;
 }
 
 .quickadd_gallery p:nth-child(2) {
@@ -132,6 +133,29 @@
   margin-left: -8%;
   margin-bottom: 8%;
   line-height: 140%;
+}
+
+/* Apply the animation */
+.category_btn.clicked {
+  animation: quickAddClick 0.5s ease;
+}
+
+/* Temporary border animation */
+@keyframes flashBorder {
+  0% {
+    border: 2px solid var(--main);
+    border-radius: 22px;
+    outline: none;
+  }
+  100% {
+    border: 2px solid transparent;
+    border-radius: 22px;
+    outline: none;
+  }
+}
+
+.quickadd_item.clicked {
+  animation: flashBorder 0.5s ease;
 }
 
 /* ---------------
@@ -168,6 +192,7 @@
 .fp_streak img {
   width: 15%;
   padding: 1rem;
+  margin-top: -1rem;
 }
 
 .fp_streak_days {
@@ -176,13 +201,14 @@
   left: 48.5%;
   text-align: center;
   font-weight: bold;
+  margin-top: -0.2rem;
 }
 
 /* ARROWS */
 /* Scroll arrow animation */
 .fp_scrollarrow {
   position: fixed;
-  bottom: 6rem;
+  bottom: 7rem;
   left: 50%;
   transform: translate(-50%);
   animation: hop 1.2s infinite ease-in-out;
@@ -194,10 +220,10 @@
 @keyframes hop {
   0%,
   100% {
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -1rem);
   }
   50% {
-    transform: translate(-50%, -3rem);
+    transform: translate(-50%, -4rem);
   }
 }
 
@@ -218,8 +244,8 @@
 
 /* SCROLL ANIMATION */
 .fp_circle_streak.scrolled .circle_container {
-  transform: scale(0.5);
-  transition: transform 1s ease;
+  transform: scale(0.65);
+  transition: transform 1s ease-in-out;
 }
 
 .fp_circletxt {
@@ -240,7 +266,8 @@
 .fp_hidden {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.8s ease, visibility 0.8 ease;
+  transition: opacity 1s ease, visibility 0.8 ease;
+  /*   margin-top: -10%; */
 }
 
 .fp_hidden.scrolled {
