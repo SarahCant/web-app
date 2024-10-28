@@ -1,10 +1,15 @@
+import { useNavigate } from "react-router-dom";
+
 export default function Category({
   categories,
   selectedCategory,
   onSelectCategory,
 }) {
-  const handleCategoryClick = (categoryId) => {
-    onSelectCategory(categoryId); // update selected category state
+  const navigate = useNavigate();
+
+  const handleCategoryClick = (category) => {
+    onSelectCategory(category.id);
+    navigate(`/updatecategory/${category.id}`);
   };
 
   function getLighterColor(color) {
@@ -32,7 +37,7 @@ export default function Category({
           return (
             <button
               key={category.id}
-              onClick={() => handleCategoryClick(category.id)}
+              onClick={() => handleCategoryClick(category)}
               className={`category_btn ${
                 selectedCategory === category.id ? "selected" : ""
               }`}

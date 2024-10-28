@@ -11,7 +11,7 @@ import AddExpenses from "./pages/AddExpenses";
 import Savings from "./pages/Savings";
 import MakeBudget from "./pages/MakeBudget";
 import MyBudget from "./pages/MyBudget";
-
+import UpdateCategory from "./pages/UpdateCategory";
 
 export default function App() {
   return (
@@ -26,6 +26,7 @@ export default function App() {
         <Route path="/savings" element={<Savings />} />
         <Route path="/makebudget" element={<MakeBudget />} />
         <Route path="/mybudget" element={<MyBudget />} />
+        <Route path="/updatecategory/:id" element={<UpdateCategory />} />
       </Routes>
     </div>
   );
