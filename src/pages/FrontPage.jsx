@@ -33,7 +33,7 @@ export default function FrontPage() {
 
     const arrowTimer = setTimeout(() => {
       setShowArrow(true);
-    }, 10000);
+    }, 7000);
 
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -70,7 +70,7 @@ export default function FrontPage() {
           console.log(
             `Successfully updated category ${categoryId} in Firebase`
           );
-          fetchCategories(); // Refetch categories to update the UI
+          fetchCategories(); // refetch categories to update the UI
         })
         .catch((error) => {
           console.error("Error updating category in Firebase:", error);
