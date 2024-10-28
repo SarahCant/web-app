@@ -7,6 +7,8 @@ export default function UpdateCategory() {
   const [name, setName] = useState("");
   const [color, setColor] = useState("");
   const [budget, setBudget] = useState("");
+  const [remaining, setRemaining] = useState("");
+  const [spent, setSpent] = useState("");
   const params = useParams();
   const url = `https://web-app-c295f-default-rtdb.firebaseio.com/category/${params.id}.json`;
   const navigate = useNavigate();
@@ -20,9 +22,27 @@ export default function UpdateCategory() {
       setName(categoryData.name);
       setColor(categoryData.color);
       setBudget(categoryData.budget);
+      setRemaining(categoryData.remaining);
+      setSpent(categoryData.budget - categoryData.remaining);
     }
     getCategory();
   }, [url]);
+
+  // Update remaining when budget changes
+  useEffect(() => {
+    const budgetNumber = Number(budget);
+    if (!isNaN(budgetNumber)) {
+      const newRemaining = budgetNumber - spent;
+      setRemaining(newRemaining);
+    }
+  }, [budget, spent]);
+
+  const handleBudgetChange = (e) => {
+    const value = e.target.value;
+    if (value === "" || /^-?\d*\.?\d*$/.test(value)) {
+      setBudget(value);
+    }
+  };
 
   // Liste over farver
   const colors = [
@@ -43,7 +63,7 @@ export default function UpdateCategory() {
   async function handleSubmit(event) {
     event.preventDefault();
 
-    const categoryToUpdate = { name, color, budget };
+    const categoryToUpdate = { name, color, budget, remaining };
 
     const response = await fetch(url, {
       method: "PATCH",
@@ -81,7 +101,7 @@ export default function UpdateCategory() {
       <h1>{category.name}</h1>
       <p>budget: {category.budget}</p>
       <p>resterende: {category.remaining}</p>
-      <p>historik (udgifter)</p>
+      <p>resterende: {remaining}</p>
 
       <h2>Ret i kategori</h2>
       <form className="category-form" onSubmit={handleSubmit}>
@@ -116,7 +136,7 @@ export default function UpdateCategory() {
             <input
               type="number"
               value={budget}
-              onChange={(e) => setBudget(e.target.value)}
+              onChange={handleBudgetChange}
               placeholder="DKK"
             />
             <span>DKK</span>
