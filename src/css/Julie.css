@@ -123,19 +123,20 @@ input {
     
   }
   
-  .input-group {
-    margin-bottom: 20px;
+  .input-group_j {
+    margin-bottom: 0; /* Remove bottom margin */
   }
   
-  .input-group input {
+  .input-group_j input {
     width: 100%;
     padding: 15px;
     font-size: 1.1em;
-    border-radius: 25px;
-    border: 1px solid #c9c9c9;
+    border-radius: 0 0 15px 15px !important;
+    border: 1px solid #CDF4FD !important;
     box-sizing: border-box;
-    background-color: #f1f8fa;
+    background-color: #CDF4FD;
     text-align: center;
+    margin-top: 40px;
   }
   
   .budget_display {
@@ -157,4 +158,26 @@ input {
   p {
     font-size: 1.2em;
     color: #333;
+  }
+
+  .hjælpe_div {
+    width: 287px;
+    height: 35px;
+    background-color: #58B7CD;
+    margin: 0; /* Fjern margin */
+    padding: 0; /* Fjern padding */
+    position: absolute;
+left: 44px;
+margin-top: 10px;
+border-radius: 15px 15px 0 0;
+display: flex;
+  align-items: center; /* Centrerer lodret */
+  justify-content: flex-start; /* Justerer til venstre */
+  padding-left: 10px;
+  }
+
+  .mb_p{
+color: white;
+font-size: 15px;
+
   }

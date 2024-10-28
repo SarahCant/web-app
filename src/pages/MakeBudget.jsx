@@ -21,19 +21,25 @@ export default function MakeBudget() {
   return (
     <div className="makebudget_main">
       <h1>Lav budget</h1>
-      <div className="input-group">
+      <div className="hjælpe_div"> 
+        <p className="mb_p">Indtast indkomst</p>
+      </div>
+      <div className="input-group_j">
         <input
           type="number"
-          placeholder="Indtast indkomst"
+          placeholder="DKK/MD"
           value={income}
           onChange={(e) => setIncome(e.target.value)}
           required
         />
       </div>
-      <div className="input-group">
+      <div className="hjælpe_div"> 
+        <p className="mb_p">Indtast faste udgifter</p>
+      </div>
+      <div className="input-group_j">
         <input
           type="number"
-          placeholder="Indtast faste udgifter"
+          placeholder="DKK/MD"
           value={expenses}
           onChange={(e) => setExpenses(e.target.value)}
           required
