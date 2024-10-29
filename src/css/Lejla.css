@@ -1,18 +1,12 @@
-  /*  ------------------------budget siden onboarding -------------------*/
+ 
 .AddCategory_container {
   max-width: 400px;
   margin: 0 auto;
   padding: 20px;
   text-align: center;
-  font-family: "Arial", sans-serif;
 }
 
-h2 {
-  color: #5a738e;
-  font-size: 2em;
-}
-
-.category-form {
+.categoryform {
   margin-top: 20px;
 }
 
@@ -99,8 +93,6 @@ input[type="number"] {
   border: none;
 }
 
-
-
 .button_budget {
   position: absolute;
   top: 15px;
@@ -159,6 +151,10 @@ input[type="number"] {
 }
 
 
+
+
+
+
  /*  ------------------------ profil siden -------------------*/
 /* Profile page styling */
 .profile-container {
@@ -169,11 +165,6 @@ input[type="number"] {
   text-align: center;
 }
 
-.back-button {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-}
 
 .top-icons {
   position: absolute;
@@ -184,22 +175,15 @@ input[type="number"] {
 }
 
 .top-icons img {
-  width: 25px;
+  width: 28px;
   height: 25px;
-}
-
-.profile-title {
-  font-family: "Poppins", sans-serif;
-  font-size: 6vw;
-  color: var(--main);
-  margin-top: 50px; /* Add space from top */
 }
 
 .profile-image-container {
   position: relative;
   margin: 20px auto;
-  width: 120px;
-  height: 120px;
+  width: 130px;
+  height: 130px;
 }
 
 .profile-image {
@@ -207,7 +191,7 @@ input[type="number"] {
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid black; /* Sort kant */
+  border: 2px solid black;
 }
 
 .edit-icon {
@@ -217,44 +201,139 @@ input[type="number"] {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background-color: var(--btn);
+  background-color: var(--main);
+  border: 1px solid black;
+  cursor: pointer;
 }
 
+/* Info box styling */
 .info-box {
-  background-color: var(--light);
+  background: linear-gradient(to bottom, var(--main) 50%, #C0D8F2 50%);
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 15px;
   margin: 15px 0;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.info-box input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
 }
 
 .info-title {
-  font-family: "Poppins", sans-serif;
-  font-size: 4vw;
-  color: var(--main);
+  color: var(--dark);
+  padding-bottom: 5px;
 }
 
 .info-detail {
-  font-family: "Raleway", sans-serif;
-  font-size: 4.5vw;
   color: var(--dark);
+  padding-top: 5px;
+  
 }
 
+/* Submit button */
+.submit-btn {
+  background-color: #00b9ce;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+/* Daily tip box */
 .daily-tip-box {
   background-color: var(--main);
   color: var(--light);
   border-radius: 20px;
   padding: 15px;
   margin-top: 20px;
+  text-align: left;
 }
 
-.daily-tip {
-  font-family: "Raleway", sans-serif;
-  font-size: 4vw;
+
+
+
+
+/* Styling for profile image container */
+.profile-image-container {
+  position: relative;
+  margin: 20px auto;
+  width: 130px;
+  height: 130px;
 }
 
-.daily-tip span {
-  font-style: italic;
-  font-size: 3.5vw;
+.profile-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid black;
 }
 
+/* Hide pencil icon in edit mode */
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--main);
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+/* Styling for the custom file input label */
+.edit-label {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+/* Only show pencil icon when not in edit mode */
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: var(--main);
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+
+/* Normal input styling */
+.info-box input {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px; /* Optional rounded corners */
+  background-color: #C0D8F2; /* Light blue for non-edit mode */
+  color: var(--dark);
+  box-sizing: border-box;
+}
+
+/* Lighter input styling for edit mode */
+.info-box input.edit-mode {
+  background-color: #E3F2FD; /* Lighter blue when in edit mode */
+  
+
+}
