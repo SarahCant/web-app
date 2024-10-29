@@ -184,7 +184,7 @@ text-decoration: none !important;
   p {
     font-size: 1.2em;
     color: #333;
-    text-align: center;
+    /*text-align: center;*/
   }
   
   .mb_p {
