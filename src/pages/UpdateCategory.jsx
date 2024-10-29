@@ -157,8 +157,10 @@ export default function UpdateCategory() {
             placeholder="DKK"
             className="input_update"
           />
-          <p className="p_update">Nuværende budget: {category.budget} DKK</p>
-          <p className="p_update">Resterende: {remaining} DKK</p>
+          <p className="p_update">
+            Nuværende budget: {Math.floor(category.budget)} DKK
+          </p>
+          <p className="p_update">Resterende: {Math.floor(remaining)} DKK</p>
         </div>
         <div className="btn_flex">
           <button className="btn">Gem ændringer</button>
