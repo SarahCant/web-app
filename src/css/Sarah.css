@@ -192,7 +192,6 @@
 .fp_streak img {
   width: 15%;
   padding: 1rem;
-  margin-top: -1rem;
 }
 
 .fp_streak_days {
@@ -246,6 +245,15 @@
 .fp_circle_streak.scrolled .circle_container {
   transform: scale(0.65);
   transition: transform 1s ease-in-out;
+  margin-bottom: -25%;
+}
+
+.fp_circle_streak.scrolled .fp_circletxt {
+  transition: transform 1s ease-in-out;
+}
+
+.fp_circle_streak.scrolled .fp_streak {
+  transition: transform 1s ease-in-out;
 }
 
 .fp_circletxt {
@@ -266,8 +274,7 @@
 .fp_hidden {
   opacity: 0;
   visibility: hidden;
-  transition: opacity 1s ease, visibility 0.8 ease;
-  /*   margin-top: -10%; */
+  transition: opacity 1s ease, visibility 0.8s ease-in-out;
 }
 
 .fp_hidden.scrolled {
