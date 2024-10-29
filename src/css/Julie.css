@@ -9,6 +9,7 @@
   background-color: #7994b1;
   align-items: center;
   z-index: 99;
+  text-decoration: none !important;
 }
 
 .midter_div {
@@ -21,12 +22,18 @@
   transition: background-color 0.3s ease;
 }
 
+.menu_knap a {
+    text-decoration: none !important;
+    color: white;
+  }
+
 .menu_knap img {
   width: auto;
   height: 25px;
 }
 
-.menu_knap p {
+.menu_knap p {  
+text-decoration: none !important;
   margin: 0;
   color: white;
   font-size: 10px;
@@ -80,63 +87,81 @@
 /*MakeBudget*/
 
 .form-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 20px;
-}
-
-input {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 20px;
-  border: 1px solid #ccc;
-  width: 250px; /* Fikseret bredde */
-  text-align: center; /* Centrerer tekst i inputfeltet */
-}
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  margin-bottom: 100px;
-}
-
-.savings-image {
-  max-width: 100%;
-  height: auto;
-}
-
-.makebudget_main {
-    background-color: #f9f9f9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .input_j {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 0 0 20px 20px !important;
+    border: 1px solid #ccc;
+    width: 300px;
+    text-align: center;
+  }
+  
+  .button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 100px;
+  }
+  
+  .savings-image {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .makebudget_main {
     padding: 20px;
     margin: 0 auto;
     max-width: 400px;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centerer alt indhold horisontalt */
     border-radius: 8px;
   }
   
   .makebudget_main h1 {
     font-size: 2em;
     color: #5a7384;
-    text-align: left; /* Venstrestiller overskriften */
-    
+    text-align: center; /* Centrerer overskriften */
   }
   
-  .input-group_j {
-    margin-bottom: 0; /* Remove bottom margin */
+  .input-container {
+    position: relative;
+    width: 300px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .hjælpe_div {
+    position: absolute;
+    top: -35px;
+    width: 300px;
+    height: 35px;
+    background-color: #58B7CD;
+    border-radius: 15px 15px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Centerer tekst i hjælpe_div */
+    padding-left: 0;
   }
   
   .input-group_j input {
     width: 100%;
     padding: 15px;
     font-size: 1.1em;
-    border-radius: 0 0 15px 15px !important;
-    border: 1px solid #CDF4FD !important;
-    box-sizing: border-box;
+    border-radius: 0 0 15px 15px;
+    border: 1px solid #CDF4FD;
     background-color: #CDF4FD;
     text-align: center;
-    margin-top: 40px;
+    box-sizing: border-box;
   }
   
   .budget_display {
@@ -144,6 +169,7 @@ input {
     font-weight: bold;
     margin: 20px 0;
     color: black;
+    text-align: center; /* Centerer teksten */
   }
   
   .fp_addcategory {
@@ -158,26 +184,10 @@ input {
   p {
     font-size: 1.2em;
     color: #333;
+    text-align: center;
   }
-
-  .hjælpe_div {
-    width: 287px;
-    height: 35px;
-    background-color: #58B7CD;
-    margin: 0; /* Fjern margin */
-    padding: 0; /* Fjern padding */
-    position: absolute;
-left: 44px;
-margin-top: 10px;
-border-radius: 15px 15px 0 0;
-display: flex;
-  align-items: center; /* Centrerer lodret */
-  justify-content: flex-start; /* Justerer til venstre */
-  padding-left: 10px;
-  }
-
-  .mb_p{
-color: white;
-font-size: 15px;
-
+  
+  .mb_p {
+    color: white;
+    font-size: 15px;
   }
