@@ -58,6 +58,7 @@ p {
   border-radius: 20px;
   color: var(--light);
   margin: 10px;
+  text-decoration: none;
 }
 
 button {
