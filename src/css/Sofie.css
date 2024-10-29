@@ -120,5 +120,95 @@
 .fp_addcategory_flex {
   text-align: center;
   margin-left: -5.5%;
-  margin-top: 2%;
+  margin-top: -2%;
+}
+
+/* --- Update Category --- */
+.arrow_back {
+  transform: scaleX(-1);
+  height: 1.8rem;
+  padding-right: 6%;
+}
+
+.arrow_h1 {
+  display: flex;
+  align-items: center;
+}
+
+.h2_update {
+  text-align: center;
+  margin: 15% 0 10% 0;
+}
+
+.label_update {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.2rem;
+  color: var(--dark);
+  font-weight: 100;
+  text-align: center;
+  margin: 2% 0 5% 0;
+}
+
+.p_update {
+  font-family: "Raleway", sans-serif;
+  font-size: 1rem;
+  color: var(--dark);
+  font-weight: 100;
+  text-align: center;
+  margin: 2% 0 2% 0;
+}
+
+.input_flex_update {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 8% 0;
+}
+
+.color_flex_update {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 95%;
+}
+
+.color-circle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  margin: 2%;
+}
+
+.plus_update {
+  height: 1.5rem;
+}
+
+.input_update[type="text"],
+.input_update[type="number"] {
+  width: 12rem;
+}
+
+.btn_delete {
+  background-color: #5e8b97;
+  margin-bottom: 10%;
+  margin-top: 4%;
+}
+
+.btn_flex {
+  display: flex;
+  justify-content: center;
+}
+
+.pencil_update {
+  height: 2rem;
+  margin: 3% 0 0 3%;
+}
+
+.h2_flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
