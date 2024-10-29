@@ -5,10 +5,11 @@ GENERAL STYLING
 /* ROOT */
 :root {
   --btn: #7ab9c8;
-  --main: #7994b1; /* Menu and h1 blue */
+  --main: #7994b1; /* menu and h1 blue */
   --dark: #33333c; /* p and h2 */
   --light: #fefdfb; /* bg and btn text */
   --light_gray: #d3d3d3; /* circle unfilled */
+  --light_blue: #c0d8f2; /* profile imputs and budget navigation */
 }
 
 /* BODY */

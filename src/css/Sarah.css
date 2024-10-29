@@ -357,3 +357,39 @@
   background-color: var(--btn);
   color: var(--light);
 }
+
+/* BUDGETNAVIGATION */
+.budgetnav_main {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 90%;
+  margin: auto;
+  padding-top: 1.5rem;
+}
+
+.budgetnav_txt {
+  background-color: var(--light_blue);
+  padding: 10%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.budgetnav_btns {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  margin: auto;
+  gap: 1rem;
+  transform: scale(1.2);
+}
+
+.budgetnav_btn_img {
+  height: 1rem;
+  padding-left: 0.6rem;
+}
+
+.budgetnav_dragon {
+  width: 60%;
+  margin: auto;
+}
