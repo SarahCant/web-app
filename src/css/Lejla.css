@@ -14,15 +14,6 @@
   margin-bottom: 20px;
 }
 
-input[type="text"],
-input[type="number"] {
-  width: 100%;
-  padding: 10px;
-  border: 2px solid #ccc;
-  border-radius: 20px;
-  font-size: 1em;
-  text-align: center;
-}
 
 .budget-input {
   display: flex;
