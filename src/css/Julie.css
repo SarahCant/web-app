@@ -77,7 +77,6 @@ text-decoration: none !important;
 .savings-heading {
   align-self: flex-start; /* Gør overskriften venstrestillet */
   margin-left: 0px; /* Tilføjer lidt margen fra venstre kant */
-  margin-top: 170px;
 }
 
 .savings-container {
@@ -95,11 +94,11 @@ text-decoration: none !important;
   
   .input_j {
     padding: 10px;
-    margin: 5px;
     border-radius: 0 0 20px 20px !important;
     border: 1px solid #ccc;
     width: 300px;
     text-align: center;
+    border: none; /* Remove border color */
   }
   
   .button-container {
@@ -133,36 +132,60 @@ text-decoration: none !important;
   
   .input-container {
     position: relative;
-    width: 300px;
-    margin-top: 20px;
+    width: 100%;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .hjælpe_div {
-    position: absolute;
-    top: -35px;
-    width: 300px;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 20px; /* Adds space between input fields and the next section */
+}
+
+.hjælpe_div, .input-group_j {
+    width: 100%; /* Gør både hjælpe_div og input-group_j lige brede */
+        border: none; /* Remove border color */
+}
+
+.hjælpe_div {
     height: 35px;
     background-color: #58B7CD;
     border-radius: 15px 15px 0 0;
     display: flex;
     align-items: center;
-    justify-content: center; /* Centerer tekst i hjælpe_div */
-    padding-left: 0;
-  }
-  
-  .input-group_j input {
+    justify-content: center;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.input-group_j {
+    padding: 0;
+    margin: 0;
+    border-radius: 0 0 15px 15px;
+    box-sizing: border-box;
+}
+
+.input_j {
     width: 100%;
     padding: 15px;
     font-size: 1.1em;
-    border-radius: 0 0 15px 15px;
+    background-color: #CDF4FD;
+    text-align: center;
     border: 1px solid #CDF4FD;
+    box-sizing: border-box;
+    border-radius: 0 0 15px 15px;
+}
+  
+.input-group_j input {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.1em;
+    border: none; /* Remove border color */
     background-color: #CDF4FD;
     text-align: center;
     box-sizing: border-box;
-  }
+    border-radius: 0 0 15px 15px;
+}
   
   .budget_display {
     font-size: 1.5em;

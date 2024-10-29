@@ -17,10 +17,10 @@ export default function Menu() {
               <p style={{ textDecoration: 'none' }}>Forside</p>
             </div>
           </a>
-          <a href="/budget" className="menu_knap" style={{ textDecoration: 'none' }}>
+          <a href="/BudgetNavigation" className="menu_knap" style={{ textDecoration: 'none' }}>
             <div className="icon_text">
               <img 
-                src={location.pathname === "/budget" ? "/img/icon_budget_blue.png" : "/img/icon_budget.png"} 
+                src={location.pathname === "/BudgetNavigation" ? "/img/icon_budget_blue.png" : "/img/icon_budget.png"} 
                 alt="Budget" 
               />
               <p style={{ textDecoration: 'none' }}>Budget</p>
