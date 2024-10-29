@@ -212,3 +212,44 @@
   justify-content: center;
   align-items: center;
 }
+
+.alert_box {
+  position: absolute;
+  width: 85%;
+  height: 120%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(254, 253, 251, 0.7);
+  z-index: 10;
+}
+
+.logo_alert {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  top: 30%;
+}
+
+.circle_alert {
+  display: inline-block;
+  width: 85%;
+  height: 17rem;
+  border-radius: 50%;
+  background-color: #fefdfb;
+  position: absolute;
+  top: 35%;
+}
+
+.btn_alert {
+  position: absolute;
+  top: 65%;
+}
+
+.p_alert {
+  position: absolute;
+  text-align: center;
+  width: 50%;
+  top: 44%;
+}
