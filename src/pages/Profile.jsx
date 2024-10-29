@@ -1,12 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../css/Lejla.css'; // Import the CSS file
 import '../css/App.css';
 
 export default function Profile() {
+  // State initialization with localStorage fallback
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState('Emma');
-  const [email, setEmail] = useState('emmabamse@hotmail.com');
-  const [profileImage, setProfileImage] = useState('public/img/profilbillede.jpg');
+  const [name, setName] = useState(() => localStorage.getItem('name') || 'Emma');
+  const [email, setEmail] = useState(() => localStorage.getItem('email') || 'emmabamse@hotmail.com');
+  const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || 'public/img/profilbillede.jpg');
+
+  // Effect to save data to localStorage
+  useEffect(() => {
+    localStorage.setItem('name', name);
+    localStorage.setItem('email', email);
+    localStorage.setItem('profileImage', profileImage);
+  }, [name, email, profileImage]);
 
   // Toggle edit mode
   const handleEditClick = () => {
@@ -16,14 +24,17 @@ export default function Profile() {
   // Handle image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
+    console.log('Selected file:', file); // Check the selected file
     if (file) {
-      setProfileImage(URL.createObjectURL(file));
+      const imageUrl = URL.createObjectURL(file); // Create a URL for the new image
+      console.log('Generated image URL:', imageUrl); // Log the generated URL
+      setProfileImage(imageUrl); // Update the profile image
     }
   };
 
   return (
     <>
-     <h1 className="profile-title" >Min profil</h1>
+      <h1 className="profile-title">Min profil</h1>
 
       {/* Top right icons */}
       <div className="top-icons">
@@ -31,13 +42,12 @@ export default function Profile() {
         <img src="public/img/settings.png" alt="Settings" />
       </div>
 
-     
       <div className="profile-container">
         {/* Profile image with edit icon */}
         <div className="profile-image-container">
           <img
             className="profile-image"
-            src={profileImage}
+            src={profileImage} // Use the current profile image
             alt="Profile"
           />
 
@@ -47,15 +57,15 @@ export default function Profile() {
               <input
                 type="file"
                 accept="image/*"
-                onChange={handleImageChange}
+                onChange={handleImageChange} // Handle image upload
                 id="file-input"
-                style={{ display: 'none' }}
+                style={{ display: 'none' }} // Hide file input
               />
               <label htmlFor="file-input" className="edit-label">Rediger</label>
             </>
           )}
-          
-          {/* Only show the pencil icon when NOT in edit mode */}
+
+          {/* Show pencil icon when NOT in edit mode */}
           {!isEditing && (
             <img
               className="edit-icon"
@@ -73,7 +83,7 @@ export default function Profile() {
             <input
               type="text"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value)} // Update name state
               className="info-detail edit-mode"
             />
           ) : (
@@ -88,7 +98,7 @@ export default function Profile() {
             <input
               type="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value)} // Update email state
               className="info-detail edit-mode"
             />
           ) : (
@@ -119,4 +129,11 @@ export default function Profile() {
     </>
   );
 }
+
+
+
+
+
+
+
 

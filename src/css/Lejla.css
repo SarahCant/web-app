@@ -319,21 +319,26 @@ input[type="number"] {
   cursor: pointer;
 }
 
-
-/* Normal input styling */
-.info-box input {
-  width: 100%;
-  padding: 10px;
-  border: none;
-  border-radius: 5px; /* Optional rounded corners */
-  background-color: #C0D8F2; /* Light blue for non-edit mode */
-  color: var(--dark);
-  box-sizing: border-box;
+/* Wrapper for profile information */
+.profile-info-container {
+  background-color: #C0D8F2; /* Light blue background */
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 15px;
 }
 
-/* Lighter input styling for edit mode */
-.info-box input.edit-mode {
-  background-color: #E3F2FD; /* Lighter blue when in edit mode */
-  
 
+
+.info-box input {
+  width: 111%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  background-color: #C0D8F2; /* Ensure light blue background */
+  color: var(--dark);
+  margin: 0 auto;
+  font-size: 1em;
+  box-sizing: border-box;
+  margin-left: -5%;
+  
 }
