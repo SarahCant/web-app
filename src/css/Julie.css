@@ -181,11 +181,11 @@ text-decoration: none !important;
     width: 100%;
   }
   
-  p {
+  /*p {
     font-size: 1.2em;
     color: #333;
-    /*text-align: center;*/
-  }
+    text-align: center;
+  }*/
   
   .mb_p {
     color: white;
