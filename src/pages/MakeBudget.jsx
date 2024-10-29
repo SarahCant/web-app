@@ -21,29 +21,33 @@ export default function MakeBudget() {
   return (
     <div className="makebudget_main">
       <h1>Lav budget</h1>
-      <div className="hjælpe_div"> 
-        <p className="mb_p">Indtast indkomst</p>
+      <div className="input-container">
+        <div className="hjælpe_div"> 
+          <p className="mb_p">Indtast indkomst</p>
+        </div>
+        <div className="input-group_j">
+          <input className="input_j"
+            type="number"
+            placeholder="DKK/MD"
+            value={income}
+            onChange={(e) => setIncome(e.target.value)}
+            required
+          />
+        </div>
       </div>
-      <div className="input-group_j">
-        <input
-          type="number"
-          placeholder="DKK/MD"
-          value={income}
-          onChange={(e) => setIncome(e.target.value)}
-          required
-        />
-      </div>
-      <div className="hjælpe_div"> 
-        <p className="mb_p">Indtast faste udgifter</p>
-      </div>
-      <div className="input-group_j">
-        <input
-          type="number"
-          placeholder="DKK/MD"
-          value={expenses}
-          onChange={(e) => setExpenses(e.target.value)}
-          required
-        />
+      <div className="input-container">
+        <div className="hjælpe_div"> 
+          <p className="mb_p">Indtast faste udgifter</p>
+        </div>
+        <div className="input-group_j">
+          <input className="input_j"
+            type="number"
+            placeholder="DKK/MD"
+            value={expenses}
+            onChange={(e) => setExpenses(e.target.value)}
+            required
+          />
+        </div>
       </div>
       <button onClick={calculateBudget} className="btn">
         Beregn budget
