@@ -156,6 +156,7 @@ import { useNavigate } from "react-router-dom";
 import Category from "../components/Category";
 import { ref, push } from "firebase/database";
 import { database } from "/firebaseConfig";
+import AlertBox from "../components/AlertBox";
 
 export default function AddExpenses() {
   const [categories, setCategories] = useState([]);
@@ -163,6 +164,7 @@ export default function AddExpenses() {
   const [cost, setCost] = useState("");
   const [quickAddName, setQuickAddName] = useState("");
   const [isContentVisible, setIsContentVisible] = useState(false);
+  const [showInfoAlert, setShowInfoAlert] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -192,7 +194,7 @@ export default function AddExpenses() {
     e.preventDefault();
 
     if (!cost || !selectedCategory) {
-      alert("Hov! Du har vidst ikke udfyldt alle felter");
+      setShowInfoAlert(true);
       return;
     }
 
@@ -230,6 +232,10 @@ export default function AddExpenses() {
   const handleQuickAddClick = () => {
     setIsContentVisible((prev) => !prev);
   };
+
+  function closeAlert() {
+    setShowInfoAlert(false);
+  }
 
   return (
     <div className="ae_main">
@@ -291,6 +297,13 @@ export default function AddExpenses() {
       <button type="submit" className="submit-btn" onClick={handleSubmit}>
         Gem
       </button>
+
+      {showInfoAlert && (
+        <AlertBox
+          alertMessage="Hov! Du skal tilføje et beløb og vælge en kategori for at gemme udgiften"
+          onOk={() => closeAlert()}
+        />
+      )}
     </div>
   );
 }

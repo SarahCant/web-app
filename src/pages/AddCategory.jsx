@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Lejla.css";
 import Category from "../components/Category";
+import AlertBox from "../components/AlertBox";
 
 export default function AddCategory() {
   // State til kategorier
@@ -9,12 +10,18 @@ export default function AddCategory() {
   const [categoryName, setCategoryName] = useState("");
   const [budget, setBudget] = useState("");
   const [color, setColor] = useState("");
+  const [showInfoAlert, setShowInfoAlert] = useState(false);
   const navigate = useNavigate();
   const remaining = useState("");
   const cost = useState("");
 
   async function handleSubmit(e) {
     e.preventDefault();
+
+    if (!categoryName || !color || !budget) {
+      setShowInfoAlert(true);
+      return;
+    }
 
     let newCategory = {
       name: categoryName,
@@ -45,6 +52,10 @@ export default function AddCategory() {
     } else {
       console.error("Kategori ikke oprettet", response.statusText);
     }
+  }
+
+  function closeAlert() {
+    setShowInfoAlert(false);
   }
 
   // Liste over farver
@@ -125,6 +136,13 @@ export default function AddCategory() {
       <h3>Liste over kategorier:</h3>
 
       <Category categories={categories} />
+
+      {showInfoAlert && (
+        <AlertBox
+          alertMessage="Hov! Du har vist ikke udfyldt alle felter"
+          onOk={() => closeAlert()}
+        />
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import "../css/sofie.css";
+import AlertBox from "../components/AlertBox";
 
 export default function UpdateCategory() {
   const [category, setCategory] = useState([]);
@@ -10,6 +11,7 @@ export default function UpdateCategory() {
   const [budget, setBudget] = useState("");
   const [remaining, setRemaining] = useState("");
   const [spent, setSpent] = useState("");
+  const [showDeleteAlert, setShowDeleteAlert] = useState(false);
   const params = useParams();
   const url = `https://web-app-c295f-default-rtdb.firebaseio.com/category/${params.id}.json`;
   const navigate = useNavigate();
@@ -80,20 +82,24 @@ export default function UpdateCategory() {
     }
   }
 
-  async function handleDelete() {
-    const shouldDelete = window.confirm(
-      "Er du sikker på, at du vil slette denne kategori?"
-    );
-    if (shouldDelete) {
-      const response = await fetch(url, {
-        method: "DELETE",
-      });
-      if (response.ok) {
-        navigate(-1);
-      } else {
-        alert("Hovsa, der skete en fejl - prøv igen senere");
-      }
+  function handleDelete() {
+    setShowDeleteAlert(true);
+  }
+
+  async function confirmDelete() {
+    const response = await fetch(url, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      navigate(-1);
+    } else {
+      alert("Hovsa, der skete en fejl - prøv igen senere");
     }
+    setShowDeleteAlert(false);
+  }
+
+  function closeAlert() {
+    setShowDeleteAlert(false);
   }
 
   return (
@@ -171,6 +177,15 @@ export default function UpdateCategory() {
         <button className="btn btn_delete" onClick={handleDelete}>
           Slet kategori
         </button>
+
+        {showDeleteAlert && (
+          <AlertBox
+            alertMessage="Er du sikker på, at du vil slette denne kategori?"
+            showConfirmButtons={true}
+            onConfirm={confirmDelete}
+            onCancel={closeAlert}
+          />
+        )}
       </div>
     </div>
   );
