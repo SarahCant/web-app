@@ -57,14 +57,6 @@ text-decoration: none !important;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.menu_knap:hover {
-  background-color: #6a83a0;
-}
-
-.plus_knap:hover {
-  background-color: #5f7494;
-}
-
 .savings-page {
   display: flex;
   flex-direction: column;
