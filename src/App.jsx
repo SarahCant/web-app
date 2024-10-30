@@ -77,7 +77,7 @@ export default function App() {
   return (
     <div>
       {showLoading ? (
-        //show the loading animation
+        //show loading animation
         <Animation />
       ) : (
         //main content:
