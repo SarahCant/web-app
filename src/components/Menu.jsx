@@ -1,6 +1,6 @@
 import "../css/App.css";
 import "../css/Julie.css";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 export default function Menu() {
     const location = useLocation();
