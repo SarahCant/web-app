@@ -93,9 +93,6 @@
   transition: opacity 1s ease;
 }
 
-.button_budget:hover {
-  /* opacity: 1; */
-}
 
 .onboarding-container {
   text-align: center;
@@ -104,11 +101,7 @@
   position: relative; /* Tilføj positionering */
 }
 
-.onboarding-container h1 {
-  font-size: 6vw;
-  color: var(--main);
-  margin-bottom: 10px;
-}
+
 
 .onboarding-container p {
   font-size: 4vw;
@@ -166,7 +159,6 @@
 }
 
 .top-icons img {
-  width: 28px;
   height: 25px;
 }
 
@@ -251,9 +243,6 @@
 }
 
 
-
-
-
 /* Styling for profile image container */
 .profile-image-container {
   position: relative;
@@ -271,7 +260,7 @@
 }
 
 /* Hide pencil icon in edit mode */
-.edit-icon {
+/* .edit-icon {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -281,7 +270,7 @@
   background-color: var(--main);
   border: 1px solid black;
   cursor: pointer;
-}
+} */
 
 /* Styling for the custom file input label */
 .edit-label {
@@ -308,7 +297,10 @@
   background-color: var(--main);
   border: 1px solid black;
   cursor: pointer;
+  object-fit: contain; 
 }
+
+
 
 /* Wrapper for profile information */
 .profile-info-container {

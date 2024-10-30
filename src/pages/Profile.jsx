@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import "../css/Lejla.css"; // Import the CSS file
 import "../css/App.css";
 
@@ -86,7 +86,9 @@ export default function Profile() {
 
         {/* Name field */}
         <div className="info-box">
-          <div className="info-title">Navn:</div>
+          <div className="info-title">
+            <p>Navn:</p>
+          </div>
           {isEditing ? (
             <input
               type="text"
@@ -101,7 +103,9 @@ export default function Profile() {
 
         {/* Email field */}
         <div className="info-box">
-          <div className="info-title">Email:</div>
+          <div className="info-title">
+            <p>Email</p>
+          </div>
           {isEditing ? (
             <input
               type="email"
