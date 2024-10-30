@@ -1,19 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import '../css/Lejla.css'; // Import the CSS file
-import '../css/App.css';
+import React, { useState, useEffect } from "react";
+import "../css/Lejla.css"; // Import the CSS file
+import "../css/App.css";
 
 export default function Profile() {
   // State initialization with localStorage fallback
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState(() => localStorage.getItem('name') || 'Emma');
-  const [email, setEmail] = useState(() => localStorage.getItem('email') || 'emmabamse@hotmail.com');
-  const [profileImage, setProfileImage] = useState(() => localStorage.getItem('profileImage') || 'public/img/profilbillede.jpg');
+  const [name, setName] = useState(
+    () => localStorage.getItem("name") || "Emma"
+  );
+  const [email, setEmail] = useState(
+    () => localStorage.getItem("email") || "emmabamse@hotmail.com"
+  );
+  const [profileImage, setProfileImage] = useState(
+    () => localStorage.getItem("profileImage") || "public/img/profilbillede.jpg"
+  );
 
   // Effect to save data to localStorage
   useEffect(() => {
-    localStorage.setItem('name', name);
-    localStorage.setItem('email', email);
-    localStorage.setItem('profileImage', profileImage);
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+    localStorage.setItem("profileImage", profileImage);
   }, [name, email, profileImage]);
 
   // Toggle edit mode
@@ -24,10 +30,10 @@ export default function Profile() {
   // Handle image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    console.log('Selected file:', file); // Check the selected file
+    console.log("Selected file:", file); // Check the selected file
     if (file) {
       const imageUrl = URL.createObjectURL(file); // Create a URL for the new image
-      console.log('Generated image URL:', imageUrl); // Log the generated URL
+      console.log("Generated image URL:", imageUrl); // Log the generated URL
       setProfileImage(imageUrl); // Update the profile image
     }
   };
@@ -59,9 +65,11 @@ export default function Profile() {
                 accept="image/*"
                 onChange={handleImageChange} // Handle image upload
                 id="file-input"
-                style={{ display: 'none' }} // Hide file input
+                style={{ display: "none" }} // Hide file input
               />
-              <label htmlFor="file-input" className="edit-label">Rediger</label>
+              <label htmlFor="file-input" className="edit-label">
+                Rediger
+              </label>
             </>
           )}
 
@@ -117,7 +125,8 @@ export default function Profile() {
         {!isEditing && (
           <div className="daily-tip-box">
             <p className="daily-tip">
-              "Even lessons learned the hard way, are lessons learned"<br />
+              "Even lessons learned the hard way, are lessons learned"
+              <br />
             </p>
             <br />
             <p>
@@ -129,11 +138,3 @@ export default function Profile() {
     </>
   );
 }
-
-
-
-
-
-
-
-
