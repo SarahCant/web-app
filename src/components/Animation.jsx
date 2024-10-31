@@ -13,19 +13,21 @@ export default function Animation() {
 
   return (
     <div className="bg_animation">
-      <div className="logo_rel_animation">
-        <img
-          className="logo_animation"
-          src="../public/img/logo_nofire.png"
-          alt="logo"
-        />
-        <img
-          className="streak_animation"
-          src="../public/img/streak.png"
-          alt=""
-        />
+      <div className="container_animation">
+        <div className="logo_rel_animation">
+          <img
+            className="logo_animation"
+            src="../public/img/logo_nofire.png"
+            alt="logo"
+          />
+          <img
+            className="streak_animation"
+            src="../public/img/streak.png"
+            alt=""
+          />
+        </div>
+        <h1 className="h1_animation">ØkonomILD</h1>
       </div>
-      <h1 className="h1_animation">ØkonomILD</h1>
     </div>
   );
 }

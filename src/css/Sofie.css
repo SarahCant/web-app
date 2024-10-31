@@ -84,6 +84,7 @@
 
 .h1_animation {
   padding-left: 0;
+  text-align: center;
   animation: streakTextGrow 1s ease-in-out forwards;
   animation-delay: 1.1s; /* Makes sure it first shows after the logo (dragon) has appeared */
   opacity: 0; /* Ensure it starts invisible */
@@ -97,6 +98,10 @@
   100% {
     opacity: 1;
   }
+}
+
+.container_animation {
+  margin-top: 75%;
 }
 
 /* --- Barchart --- */
