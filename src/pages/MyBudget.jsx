@@ -38,7 +38,7 @@ export default function MyBudget() {
     <>
       <h1>Mit budget</h1>
       <BarChart data={categories} />
-      <p>Tryk på en kategori for at redigere den:</p>
+      <p className="p_mybudget">Tryk på en kategori for at redigere den:</p>
       <Category
         categories={categories}
         selectedCategory={selectedCategory}
