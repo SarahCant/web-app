@@ -1,3 +1,4 @@
+/* --- SOFIE --- */
 import "../css/sofie.css";
 
 export default function AlertBox({
@@ -18,7 +19,7 @@ export default function AlertBox({
             <button className="btn" onClick={onConfirm}>
               Ja
             </button>
-            <button className="btn" onClick={onCancel}>
+            <button className="btn btn_delete" onClick={onCancel}>
               Annuller
             </button>
           </>

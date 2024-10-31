@@ -229,7 +229,7 @@
   width: 100%;
   position: absolute;
   z-index: 5;
-  top: 30%;
+  top: 20%;
 }
 
 .circle_alert {
@@ -239,17 +239,17 @@
   border-radius: 50%;
   background-color: #fefdfb;
   position: absolute;
-  top: 35%;
+  top: 25%;
 }
 
 .btn_alert {
   position: absolute;
-  top: 65%;
+  top: 60%;
 }
 
 .p_alert {
   position: absolute;
   text-align: center;
   width: 50%;
-  top: 44%;
+  top: 35%;
 }

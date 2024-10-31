@@ -1,3 +1,4 @@
+/* --- SOFIE --- */
 import Category from "../components/Category";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
