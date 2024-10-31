@@ -1,20 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/Julie.css";
 import { database } from "/firebaseConfig";
-import { ref, set } from "firebase/database";
+import { ref, set, onValue } from "firebase/database";
+
+export let availableBudget = null;
 
 export default function MakeBudget() {
   const [income, setIncome] = useState("");
   const [expenses, setExpenses] = useState("");
-  const [availableBudget, setAvailableBudget] = useState(null);
+  const [availableBudgetState, setAvailableBudgetState] = useState(null);
+  const [storedBudget, setStoredBudget] = useState(null);
+
+  useEffect(() => {
+    // Fetch the available budget from Firebase on component mount
+    const budgetRef = ref(database, "budget/availableBudget");
+    onValue(budgetRef, (snapshot) => {
+      const budgetValue = snapshot.val();
+      if (budgetValue !== null) {
+        setStoredBudget(budgetValue);
+      }
+    });
+  }, []);
 
   const calculateBudget = () => {
     const incomeValue = parseFloat(income);
     const expensesValue = parseFloat(expenses);
     if (!isNaN(incomeValue) && !isNaN(expensesValue)) {
       const calculatedBudget = incomeValue - expensesValue;
-      setAvailableBudget(calculatedBudget);
+      setAvailableBudgetState(calculatedBudget);
+      availableBudget = calculatedBudget;
 
       // Save the available budget to Firebase
       const budgetRef = ref(database, "budget/availableBudget");
@@ -64,12 +79,18 @@ export default function MakeBudget() {
         </div>
       </div>
       <button onClick={calculateBudget} className="btn">
-        Beregn budget
+        Beregn og gem budget
       </button>
 
-      {availableBudget !== null && (
+      {availableBudgetState !== null && (
         <div className="budget_display">
-          <p>{availableBudget},- til rådighed</p>
+          <p>{availableBudgetState},- til rådighed</p>
+        </div>
+      )}
+
+      {storedBudget !== null && (
+        <div className="stored_budget_display">
+          <p>Dit nuværende totale rådighedsbeløb: {storedBudget},-</p>
         </div>
       )}
 

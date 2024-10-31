@@ -1,15 +1,15 @@
 import "../css/Sarah.css";
 
-export default function Circle({ categories }) {
-  // Calculate total budget (sum of all categories' budgets)
-  const totalBudget = categories.reduce(
-    (acc, category) => acc + (Number(category.budget) || 0),
-    0
-  );
+export default function Circle({ categories, availableBudget }) {
+  // Calculate total expenses based on categories
+  const totalExpenses = categories.reduce((acc, category) => {
+    const expense = Number(category.budget) - Number(category.remaining);
+    return acc + (isNaN(expense) ? 0 : expense); // Sum up valid expenses
+  }, 0);
 
   let cumulativePercent = 0;
 
-  // Function to get coordinates for percentage of circle
+  // Get coordinates for percentage of circle
   function getCoordinatesForPercent(percent) {
     const x = Math.cos(2 * Math.PI * percent);
     const y = Math.sin(2 * Math.PI * percent);
@@ -19,7 +19,7 @@ export default function Circle({ categories }) {
   return (
     <div className="circle_container">
       <svg className="circle_svg" viewBox="-1.2 -1.2 2.4 2.4">
-        {/* Background circle */}
+        {/* Gray background circle */}
         <circle
           cx="0"
           cy="0"
@@ -29,16 +29,29 @@ export default function Circle({ categories }) {
           strokeWidth="16%"
         />
 
+        {/* Draw remaining arc if there's any unspent budget */}
+        {availableBudget > totalExpenses && (
+          <path
+            d={`M ${getCoordinatesForPercent(cumulativePercent).join(" ")}
+              A 1 1 0 0 1 ${getCoordinatesForPercent(1).join(" ")}`}
+            className="circle_path"
+            stroke="var(--light_gray)" // Change to your desired remaining color
+            strokeWidth="16%"
+            fill="none"
+          />
+        )}
+
         {/* Loop through categories and draw segments for those with expenses */}
         {categories.map((category) => {
           // Calculate how much of the budget has been used
-          const expense = category.budget - category.remaining;
+          const expense = Number(category.budget) - Number(category.remaining);
 
-          // Calculate the percentage of the total budget used for this category
-          const expensePercent = expense / totalBudget;
+          // Only draw if there's a valid expense
+          if (expense <= 0 || isNaN(expense)) return null;
 
-          // Skip if no expenses or invalid budget
-          if (expensePercent <= 0 || isNaN(expensePercent)) return null;
+          // Calculate the percentage of available budget used for this category
+          const expensePercent =
+            availableBudget > 0 ? expense / availableBudget : 0;
 
           // Get start and end coordinates for the arc
           const [startX, startY] = getCoordinatesForPercent(cumulativePercent);
