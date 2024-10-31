@@ -1,3 +1,9 @@
+/* 
+SOFIE & SARAH (BASED ON LEJLA'S INITIAL ADDCATEGORY CODE)
+SOFIE: EXTRA FOCUS ON CATEGORY FILL AND LOOK
+SARAH: EXTRA FOCUS ON RERENDERING VALUES TO OTHER PAGES 
+*/
+
 export default function Category({
   categories,
   selectedCategory,
@@ -63,7 +69,7 @@ export default function Category({
                         }`
                       : `${category.budget}/${category.budget}`}
                   </p>
-                  <p>DKK tilbage</p>
+                  <p>kr. tilbage</p>
                 </div>
               </div>
             </button>

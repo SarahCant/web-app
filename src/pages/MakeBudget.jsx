@@ -1,9 +1,15 @@
+/* 
+JULIE: CSS
+SARAH: JSX 
+*/
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import "../css/Julie.css";
 import { database } from "/firebaseConfig";
 import { ref, set, onValue } from "firebase/database";
 
+// exported variable to store availableBudget globally so it can be used elsewhere
 export let availableBudget = null;
 
 export default function MakeBudget() {
@@ -12,13 +18,14 @@ export default function MakeBudget() {
   const [availableBudgetState, setAvailableBudgetState] = useState(null);
   const [storedBudget, setStoredBudget] = useState(null);
 
+  // fetch availableBudget from firebase on component mount
   useEffect(() => {
-    // Fetch the available budget from Firebase on component mount
     const budgetRef = ref(database, "budget/availableBudget");
+    // fetch budget from firebase + set in local state
     onValue(budgetRef, (snapshot) => {
       const budgetValue = snapshot.val();
       if (budgetValue !== null) {
-        setStoredBudget(budgetValue);
+        setStoredBudget(budgetValue); // update in firebase
       }
     });
   }, []);
@@ -26,12 +33,13 @@ export default function MakeBudget() {
   const calculateBudget = () => {
     const incomeValue = parseFloat(income);
     const expensesValue = parseFloat(expenses);
+    // check if both values are valid numbers + calc remaining
     if (!isNaN(incomeValue) && !isNaN(expensesValue)) {
       const calculatedBudget = incomeValue - expensesValue;
       setAvailableBudgetState(calculatedBudget);
       availableBudget = calculatedBudget;
 
-      // Save the available budget to Firebase
+      // save availableBudget to firebase + console.log firebase saving status
       const budgetRef = ref(database, "budget/availableBudget");
       set(budgetRef, calculatedBudget)
         .then(() => {
@@ -41,13 +49,15 @@ export default function MakeBudget() {
           console.error("Error saving available budget to Firebase:", error);
         });
     } else {
-      alert("Please enter valid numbers.");
+      alert("Hov! Det er vidst ikke kun tal");
     }
   };
 
   return (
     <div className="makebudget_main">
       <h1>Lav budget</h1>
+
+      {/* input sections for income + expenses */}
       <div className="input-container">
         <div className="hjælpe_div">
           <p className="mb_p">Indtast indkomst</p>
@@ -78,22 +88,27 @@ export default function MakeBudget() {
           />
         </div>
       </div>
+
+      {/* btn to calc + save budget */}
       <button onClick={calculateBudget} className="btn">
         Beregn og gem
       </button>
 
+      {/* display availableBudget if it exists */}
       {availableBudgetState !== null && (
         <div className="budget_display">
           <p>{availableBudgetState},- til rådighed</p>
         </div>
       )}
 
+      {/* display stored budget from firebase if it exists */}
       {storedBudget !== null && (
         <div className="stored_budget_display">
           <p>Dit nuværende totale rådighedsbeløb: {storedBudget},-</p>
         </div>
       )}
 
+      {/* btn: create new budget categories */}
       <p>Opret budgetkategorier</p>
       <Link to="/addcategory">
         <img

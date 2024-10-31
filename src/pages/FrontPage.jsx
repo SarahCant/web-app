@@ -18,9 +18,10 @@ export default function FrontPage() {
   const navigate = useNavigate();
 
   const handleCategoryClick = (categoryId) => {
-    navigate(`/updatecategory/${categoryId}`);
+    navigate(`/updatecategory/${categoryId}`); //nav to UpdateCategory when category is clicked
   };
 
+  // fetch category data from firebase
   const fetchCategories = useCallback(() => {
     const categoryRef = ref(database, "category");
     onValue(categoryRef, (snapshot) => {
@@ -35,6 +36,7 @@ export default function FrontPage() {
     });
   }, []);
 
+  //fetch availableBudget data from firebase
   const fetchAvailableBudget = useCallback(() => {
     const budgetRef = ref(database, "budget/availableBudget");
     onValue(budgetRef, (snapshot) => {
@@ -45,6 +47,7 @@ export default function FrontPage() {
     });
   }, []);
 
+  // initial data fetch + scroll listener and arrow timer
   useEffect(() => {
     fetchCategories();
     fetchAvailableBudget();
@@ -69,7 +72,7 @@ export default function FrontPage() {
     };
   }, [fetchCategories, fetchAvailableBudget]);
 
-  // This useEffect will calculate the display budget whenever categories or availableBudget change
+  // calc + display remaining
   useEffect(() => {
     calculateDisplayBudget(categories, availableBudget);
   }, [categories, availableBudget]);
@@ -84,12 +87,13 @@ export default function FrontPage() {
     setDisplayBudget(Math.max(newDisplayBudget, 0).toFixed(2));
   };
 
+  //update remaining in firebase
   const handleCategoryUpdate = useCallback(
     (categoryId, newRemaining) => {
       const categoryRef = ref(database, `category/${categoryId}`);
       update(categoryRef, { remaining: newRemaining })
         .then(() => {
-          fetchCategories(); // Re-fetch categories after update
+          fetchCategories(); // re-fetch categories after update
         })
         .catch((error) => {
           console.error("Error updating category in Firebase:", error);
@@ -98,6 +102,7 @@ export default function FrontPage() {
     [fetchCategories]
   );
 
+  //get current month in Danish
   const getCurrentMonth = () => {
     const months = [
       "JANUAR",
@@ -121,6 +126,7 @@ export default function FrontPage() {
     <>
       <h1>Min oversigt</h1>
       <div className={`fp_circle_streak ${isScrolled ? "scrolled" : ""}`}>
+        {/* display circle component if categories are loaded */}
         {categories.length > 0 && (
           <Circle categories={categories} availableBudget={availableBudget} />
         )}
@@ -157,6 +163,7 @@ export default function FrontPage() {
         Husk, at du kan trykke på en kategori for at redigere den.
       </p>
 
+      {/* arrow guiding scroll */}
       {showArrow && !isScrolled && (
         <img
           src="../public/img/arrow_frontpage.png"

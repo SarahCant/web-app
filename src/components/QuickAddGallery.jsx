@@ -1,3 +1,4 @@
+/* SARAH */
 import { useEffect, useState, useCallback } from "react";
 import { database } from "/firebaseConfig";
 import { ref, onValue, get } from "firebase/database";
@@ -9,6 +10,7 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
   const [quickAdds, setQuickAdds] = useState([]);
   const navigate = useNavigate();
 
+  //fetch quickadd items from firebase
   useEffect(() => {
     const quickAddRef = ref(database, "quickadds");
     const unsubscribeQuickAdds = onValue(quickAddRef, (snapshot) => {
@@ -22,11 +24,13 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
       setQuickAdds(quickAddArray);
     });
 
+    //stop firebase listener after quickadd component is unmounted
     return () => {
       unsubscribeQuickAdds();
     };
   }, []);
 
+  //handle click on quickadd item to update category's remaining
   const handleQuickAddClick = useCallback(
     async (quickAdd) => {
       const categoryId = quickAdd.category;
@@ -35,6 +39,7 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
       const categoryRef = ref(database, `category/${categoryId}`);
 
       try {
+        // fetch category data from firebase
         const snapshot = await get(categoryRef);
         const categoryData = snapshot.val();
 
@@ -47,6 +52,7 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
             `Updating category ${categoryId}. Current remaining: ${currentRemaining}, New remaining: ${updatedRemaining}`
           );
 
+          // update category w/ new remaining value
           onCategoryUpdate(categoryId, updatedRemaining);
 
           // trigger border effect
@@ -69,6 +75,7 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
     [onCategoryUpdate]
   );
 
+  // swipe handlers for scrolling quickadd gallery
   const handlers = useSwipeable({
     onSwipedLeft: () => scrollGallery("left"),
     onSwipedRight: () => scrollGallery("right"),
@@ -88,6 +95,7 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
   return (
     <div {...handlers} className="quickadd_gallery">
       <div className="quickadd_items">
+        {/* display quickadd items and/or placeholder btn */}
         {quickAdds.length > 0 ? (
           quickAdds.map((quickAdd) => (
             <div
@@ -98,12 +106,14 @@ export default function QuickAddGallery({ onCategoryUpdate }) {
               onClick={() => handleQuickAddClick(quickAdd)}
             >
               <p>{quickAdd.name}</p>
-              <p>{quickAdd.cost} DKK</p>
+              <p>{quickAdd.cost} kr.</p>
             </div>
           ))
         ) : (
           <div className="quickadd_item"></div>
         )}
+
+        {/* btn to add new quickadd */}
         <div
           className="quickadd_item"
           style={{ backgroundColor: "var(--btn)" }}

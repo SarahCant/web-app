@@ -1,4 +1,4 @@
-/* ------ SARAH'S CSS ------ */
+/* SARAH */
 
 /* ---------------
 --- COMPONENTS ---
@@ -9,19 +9,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 2vh 0; /* was 4vh 0 */
-  transform: scale(1); /* Default scale = full size */
-  transition: transform 1s ease; /* Ensure smooth scaling */
+  padding: 2vh 0;
+  transform: scale(1); /* default scale = full size */
+  transition: transform 1s ease; /* smooth scaling */
 }
 
 .circle_svg {
   max-width: 95%;
   max-height: auto;
-  transform: rotate(-90deg); /* Starting point = top */
+  transform: rotate(-90deg); /* starting point = top */
 }
 
 .circle_path {
-  fill: none; /* Only outline */
+  fill: none; /* only outline */
   stroke-width: 16%;
   stroke-linecap: round;
 }
@@ -70,7 +70,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 1; /* Ensures text is above the fill */
+  z-index: 1; /* text above category fill */
 }
 
 .category_txt p {
@@ -169,7 +169,7 @@
 /* Circle and streak text */
 .fp_circle_streak {
   text-align: center;
-  transition: all 0.8s ease; /* For the scroll fade */
+  transition: all 0.8s ease; /* for scroll fade */
 }
 
 /* Circle inner text */

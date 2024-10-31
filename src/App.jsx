@@ -29,7 +29,7 @@ export default function App() {
       setShowLoading(true);
       sessionStorage.setItem("hasVisited", "true");
 
-      //hide loading screen after 5s
+      //hide loading screen after 6s
       setTimeout(() => {
         setShowLoading(false);
       }, 6000);

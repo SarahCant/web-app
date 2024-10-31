@@ -1,3 +1,4 @@
+/* SARAH */
 import { Link } from "react-router-dom";
 
 export default function BudgetNavigation() {
@@ -5,6 +6,7 @@ export default function BudgetNavigation() {
     <>
       <h1>Budgetnavigation</h1>
 
+      {/* btns to budget pages */}
       <div className="budgetnav_main">
         <div className="budgetnav_txt">
           <p>Her kan du se de forskellige stadier af budgettet:</p>
