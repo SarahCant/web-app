@@ -1,3 +1,4 @@
+/* SARAH */
 import "../css/Sarah.css";
 import { useState, useEffect, useCallback } from "react";
 import Circle from "../components/Circle";
