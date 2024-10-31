@@ -79,7 +79,7 @@ export default function MakeBudget() {
         </div>
       </div>
       <button onClick={calculateBudget} className="btn">
-        Beregn og gem budget
+        Beregn og gem
       </button>
 
       {availableBudgetState !== null && (

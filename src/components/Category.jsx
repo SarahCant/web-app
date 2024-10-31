@@ -63,6 +63,7 @@ export default function Category({
                         }`
                       : `${category.budget}/${category.budget}`}
                   </p>
+                  <p>DKK tilbage</p>
                 </div>
               </div>
             </button>
