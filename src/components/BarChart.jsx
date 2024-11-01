@@ -1,4 +1,4 @@
-/* --- SOFIE --- */
+/* SOFIE */
 import "../css/Sofie.css";
 
 export default function BarChart({ data }) {

@@ -1,4 +1,4 @@
-/* --- SOFIE --- */
+/* SOFIE */
 import "../css/sofie.css";
 
 export default function AlertBox({

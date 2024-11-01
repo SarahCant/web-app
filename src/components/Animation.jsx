@@ -1,4 +1,4 @@
-/* --- SOFIE --- */
+/* SOFIE */
 import "../css/Sofie.css";
 import { useEffect } from "react";
 
