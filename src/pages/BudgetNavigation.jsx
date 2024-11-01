@@ -33,7 +33,7 @@ export default function BudgetNavigation() {
         </div>
 
         <img
-          src="/img/drage.png"
+          src="/img/logo_fire.png"
           alt="Drage maskot"
           className="budgetnav_dragon"
         />
