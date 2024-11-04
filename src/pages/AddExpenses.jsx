@@ -143,9 +143,10 @@ export default function AddExpenses() {
             <div className="budget-input">
               <input
                 type="text"
-                placeholder="Navn på quick add"
+                placeholder="Quick add navn"
                 value={quickAddName}
                 onChange={(e) => setQuickAddName(e.target.value)}
+                className="ae_quick_imput"
               />
             </div>
           </div>

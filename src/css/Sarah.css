@@ -377,8 +377,12 @@
 }
 
 .ae_input_group {
-  width: 60%;
+  width: 100%;
   margin: auto;
+}
+
+.ae_quick_imput {
+  width: 60% !important;
 }
 
 .bg_btn {
