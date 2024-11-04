@@ -112,7 +112,7 @@ export default function MakeBudget() {
       <p>Opret budgetkategorier</p>
       <Link to="/addcategory">
         <img
-          src="../public/img/plus.png"
+          src="img/plus.png"
           alt="Tilføj kategori"
           className="fp_addcategory"
         />

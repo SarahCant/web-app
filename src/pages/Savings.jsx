@@ -132,7 +132,7 @@ export default function Savings() {
       )}
       <img
         className={`coins_savings ${playAnimation ? "show_coins_savings" : ""}`}
-        src="/img/savings_coins.png"
+        src="img/savings_coins.png"
         alt=""
         onAnimationEnd={() => setPlayAnimation(false)}
       />

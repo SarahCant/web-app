@@ -18,10 +18,10 @@ export default function Animation() {
         <div className="logo_rel_animation">
           <img
             className="logo_animation"
-            src="/img/logo_nofire.png"
+            src="img/logo_nofire.png"
             alt="logo"
           />
-          <img className="streak_animation" src="/img/streak.png" alt="fire" />
+          <img className="streak_animation" src="img/streak.png" alt="fire" />
         </div>
         <h1 className="h1_animation">ØkonomILD</h1>
       </div>

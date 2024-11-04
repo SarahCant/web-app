@@ -10,7 +10,7 @@ export default function AlertBox({
 }) {
   return (
     <div className="alert_box">
-      <img className="logo_alert" src="/img/logo_fire.png" alt="logo" />
+      <img className="logo_alert" src="img/logo_fire.png" alt="logo" />
       <span className="circle_alert"></span>
       <p className="p_alert">{alertMessage}</p>
       <div className="btn_alert">

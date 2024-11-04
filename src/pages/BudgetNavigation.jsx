@@ -16,7 +16,7 @@ export default function BudgetNavigation() {
           <NavLink to="/makebudget" className="btn">
             Opret budget
             <img
-              src="/img/plus.png"
+              src="img/plus.png"
               alt="Tilføj budget"
               className="budgetnav_btn_img"
             />
@@ -25,7 +25,7 @@ export default function BudgetNavigation() {
           <NavLink to="/mybudget" className="btn">
             Budgetoversigt
             <img
-              src="/img/icon_budget.png"
+              src="img/icon_budget.png"
               alt="Min budgetoversigt"
               className="budgetnav_btn_img"
             />
@@ -33,7 +33,7 @@ export default function BudgetNavigation() {
         </div>
 
         <img
-          src="/img/logo_fire.png"
+          src="img/logo_fire.png"
           alt="Drage maskot"
           className="budgetnav_dragon"
         />

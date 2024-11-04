@@ -49,7 +49,7 @@ export default function MyBudget() {
         {/* add category */}
         <Link to="/addcategory">
           <img
-            src="/img/plus.png"
+            src="img/plus.png"
             alt="Tilføj kategori"
             className="fp_addcategory"
           />
