@@ -67,7 +67,7 @@ export default function Menu() {
           <div className="icon_text">
             <img
               src={
-                location.pathname === "/Savings"
+                location.pathname === "/savings"
                   ? "img/icon_savings_blue.png"
                   : "img/icon_savings.png"
               }
