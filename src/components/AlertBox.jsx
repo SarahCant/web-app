@@ -1,5 +1,5 @@
 /* SOFIE */
-import "../css/sofie.css";
+import "../css/Sofie.css";
 
 export default function AlertBox({
   alertMessage,
