@@ -309,8 +309,19 @@
   align-items: center;
 }
 
-.ae_main p:first-child {
+.ae_budget_input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.ae_main p {
   padding-bottom: 4%;
+}
+
+.ae_note {
+  margin-top: 5%;
 }
 
 .ae_txt {
@@ -331,6 +342,7 @@
   margin: 3% auto;
   transition: background-color 0.3s ease-in-out;
   border-radius: 20px;
+  padding-bottom: 5%;
 }
 
 .ae_quickadd p {
