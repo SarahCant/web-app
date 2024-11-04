@@ -1,7 +1,4 @@
-/* 
-LEJLA: INITIAL DRAFT + CSS
-SOFIE & SARAH: REORGANISATION + DEVIDE INTO CATEGORY COMPONENT 
- */
+/* LEJLA, SARAH, SOFIE*/
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Lejla.css";
