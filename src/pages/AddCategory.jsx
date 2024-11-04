@@ -8,6 +8,7 @@ import "../css/Lejla.css";
 import "../css/App.css";
 import Category from "../components/Category";
 import AlertBox from "../components/AlertBox";
+import { availableBudget } from "./MakeBudget";
 
 export default function AddCategory() {
   const [categories, setCategories] = useState([]);
@@ -26,6 +27,12 @@ export default function AddCategory() {
       setShowInfoAlert(true);
       return;
     }
+
+    const newBudget = parseFloat(budget);
+    const currentTotalBudget = categories.reduce(
+      (sum, category) => sum + parseFloat(category.budget),
+      0
+    );
 
     let newCategory = {
       name: categoryName,
