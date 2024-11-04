@@ -122,6 +122,7 @@ export default function AddExpenses() {
           categories={categories}
           selectedCategory={selectedCategory}
           onSelectCategory={setSelectedCategory}
+          isSelectionOnly={true}
         />
       </section>
 

@@ -10,15 +10,8 @@ export default function Category({
   categories,
   selectedCategory,
   onSelectCategory,
-  renderCategoryLink,
+  isSelectionOnly = false,
 }) {
-  const handleCategoryClick = (categoryId) => {
-    onSelectCategory(categoryId);
-    if (onClickCategory) {
-      onClickCategory(categoryId); // only call if it exists
-    }
-  };
-
   function getLighterColor(color) {
     let r = parseInt(color.slice(1, 3), 16);
     let g = parseInt(color.slice(3, 5), 16);
@@ -41,42 +34,47 @@ export default function Category({
             category.budget - (category.remaining || category.budget);
           const spentRatio = spent / category.budget;
 
-          return (
-            <NavLink
-              key={category.id}
-              to={`/updatecategory/${category.id}`}
-              className={({ isActive }) =>
-                `category_btn ${isActive ? "selected" : ""} ${
-                  selectedCategory === category.id ? "selected" : ""
-                }`
-              }
-              onClick={() => onSelectCategory(category.id)}
+          const commonProps = {
+            key: category.id,
+            className: `category_btn ${
+              selectedCategory === category.id ? "selected" : ""
+            }`,
+            onClick: () => onSelectCategory(category.id),
+          };
+
+          const content = (
+            <div
+              className="category_disp"
+              style={{ backgroundColor: getLighterColor(category.color) }}
             >
               <div
-                className="category_disp"
-                style={{ backgroundColor: getLighterColor(category.color) }}
-              >
-                <div
-                  className="category_fill"
-                  style={{
-                    backgroundColor: category.color,
-                    height: `${spentRatio * 100}%`,
-                  }}
-                />
-                <div className="category_txt">
-                  <p>{category.name}</p>
-                  <p>
-                    {category.remaining !== null &&
-                    category.remaining !== category.budget &&
-                    category.remaining !== undefined
-                      ? `${parseFloat(category.remaining).toFixed(0)}/${
-                          category.budget
-                        }`
-                      : `${category.budget}/${category.budget}`}
-                  </p>
-                  <p>kr. tilbage</p>
-                </div>
+                className="category_fill"
+                style={{
+                  backgroundColor: category.color,
+                  height: `${spentRatio * 100}%`,
+                }}
+              />
+              <div className="category_txt">
+                <p>{category.name}</p>
+                <p>
+                  {category.remaining !== null &&
+                  category.remaining !== category.budget &&
+                  category.remaining !== undefined
+                    ? `${parseFloat(category.remaining).toFixed(0)}/${
+                        category.budget
+                      }`
+                    : `${category.budget}/${category.budget}`}
+                </p>
+                <p>kr. tilbage</p>
               </div>
+            </div>
+          );
+
+          return isSelectionOnly ? (
+            <div {...commonProps}>{content}</div>
+          ) : (
+            <NavLink {...commonProps} to={`/updatecategory/${category.id}`}>
+              {content}
             </NavLink>
           );
         })}
