@@ -139,7 +139,7 @@ export default function AddExpenses() {
           className={`ae_quickadd_content ${isContentVisible ? "visible" : ""}`}
         >
           <p>Titel</p>
-          <div className="input-group">
+          <div className="ae_input_group">
             <div className="budget-input">
               <input
                 type="text"
