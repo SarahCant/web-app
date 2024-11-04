@@ -12,7 +12,11 @@ export default function Menu() {
     <>
       <div className="menu_div">
         {/* Home link with conditional icon color based on active path */}
-        <a href="/" className="menu_knap" style={{ textDecoration: "none" }}>
+        <NavLink
+          to="/"
+          className="menu_knap"
+          style={{ textDecoration: "none" }}
+        >
           <div className="icon_text">
             <img
               src={
@@ -24,7 +28,7 @@ export default function Menu() {
             />
             <p style={{ textDecoration: "none" }}>Home</p>
           </div>
-        </a>
+        </NavLink>
 
         {/* Budget link with conditional icon color based on active path */}
 
@@ -50,13 +54,13 @@ export default function Menu() {
         <div className="midter_div"></div>
 
         {/* Link to add new expenses with a "+" icon */}
-        <a href="/addExpenses" style={{ textDecoration: "none" }}>
+        <NavLink to="/addExpenses" style={{ textDecoration: "none" }}>
           <div className="plus_knap">+</div>
-        </a>
+        </NavLink>
 
         {/* Savings link with conditional icon color based on active path */}
-        <a
-          href="/Savings"
+        <NavLink
+          to="/savings"
           className="menu_knap"
           style={{ textDecoration: "none" }}
         >
@@ -71,11 +75,11 @@ export default function Menu() {
             />
             <p style={{ textDecoration: "none" }}>Savings</p>
           </div>
-        </a>
+        </NavLink>
 
         {/* Profile link with conditional icon color based on active path */}
-        <a
-          href="/profile"
+        <NavLink
+          to="/profile"
           className="menu_knap"
           style={{ textDecoration: "none" }}
         >
@@ -90,7 +94,7 @@ export default function Menu() {
             />
             <p style={{ textDecoration: "none" }}>Profile</p>
           </div>
-        </a>
+        </NavLink>
       </div>
     </>
   );
