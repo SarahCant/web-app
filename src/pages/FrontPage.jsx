@@ -18,7 +18,7 @@ export default function FrontPage() {
   const navigate = useNavigate();
 
   const handleCategoryClick = (categoryId) => {
-    navigate(`/updatecategory/${categoryId}`); //nav to UpdateCategory when category is clicked
+    navigate(/updatecategory/${categoryId}); //nav to UpdateCategory when category is clicked
   };
 
   // fetch category data from firebase
@@ -90,7 +90,7 @@ export default function FrontPage() {
   //update remaining in firebase
   const handleCategoryUpdate = useCallback(
     (categoryId, newRemaining) => {
-      const categoryRef = ref(database, `category/${categoryId}`);
+      const categoryRef = ref(database, category/${categoryId});
       update(categoryRef, { remaining: newRemaining })
         .then(() => {
           fetchCategories(); // re-fetch categories after update

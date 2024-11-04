@@ -4,11 +4,13 @@ SOFIE: EXTRA FOCUS ON CATEGORY FILL AND LOOK
 SARAH: EXTRA FOCUS ON RERENDERING VALUES TO OTHER PAGES 
 */
 
+import { NavLink } from "react-router-dom";
+
 export default function Category({
   categories,
   selectedCategory,
   onSelectCategory,
-  onClickCategory,
+  renderCategoryLink,
 }) {
   const handleCategoryClick = (categoryId) => {
     onSelectCategory(categoryId);
@@ -40,12 +42,15 @@ export default function Category({
           const spentRatio = spent / category.budget;
 
           return (
-            <button
+            <NavLink
               key={category.id}
-              onClick={() => handleCategoryClick(category.id)}
-              className={`category_btn ${
-                selectedCategory === category.id ? "selected" : ""
-              }`}
+              to={`/updatecategory/${category.id}`}
+              className={({ isActive }) =>
+                `category_btn ${isActive ? "selected" : ""} ${
+                  selectedCategory === category.id ? "selected" : ""
+                }`
+              }
+              onClick={() => onSelectCategory(category.id)}
             >
               <div
                 className="category_disp"
@@ -72,7 +77,7 @@ export default function Category({
                   <p>kr. tilbage</p>
                 </div>
               </div>
-            </button>
+            </NavLink>
           );
         })}
       </div>
