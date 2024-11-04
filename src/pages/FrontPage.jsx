@@ -140,7 +140,7 @@ export default function FrontPage() {
         </section>
         <section className={`fp_streak ${isScrolled ? "fade-out" : "fade-in"}`}>
           <p>Du klarer det så godt!</p>
-          <img src="../publicimg/streak.png" alt="App streak" />
+          <img src="img/streak.png" alt="App streak" />
           <p className="fp_streak_days">3</p>
         </section>
       </div>
