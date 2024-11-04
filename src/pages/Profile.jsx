@@ -23,7 +23,7 @@ export default function Profile() {
     () => localStorage.getItem("email") || "emmabamse@hotmail.com"
   );
   const [profileImage, setProfileImage] = useState(() => {
-    return localStorage.getItem("profileImage") || "img/profilbillede.jpg";
+    return localStorage.getItem("profileImage") || "/img/profilbillede.jpg";
   });
   const [dailyQuote, setDailyQuote] = useState("");
   const [showInfoAlert, setShowInfoAlert] = useState(false);
