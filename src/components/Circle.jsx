@@ -19,7 +19,7 @@ export default function Circle({ categories, availableBudget }) {
 
   return (
     <div className="circle_container">
-      <svg className="circle_svg" viewBox="-1.2 -1.2 2.4 2.4">
+      <svg className="circle_svg" viewBox={`-1.2 -1.2 2.4 2.4`}>
         {/* gray background circle */}
         <circle
           cx="0"

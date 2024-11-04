@@ -15,8 +15,8 @@
 }
 
 .circle_svg {
-  max-width: 95%;
-  max-height: auto;
+  width: 95%;
+  height: auto;
   transform: rotate(-90deg); /* starting point = top */
 }
 
