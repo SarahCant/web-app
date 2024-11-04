@@ -166,7 +166,7 @@ export default function FrontPage() {
       {/* arrow guiding scroll */}
       {showArrow && !isScrolled && (
         <img
-          src="../publicimg/arrow_frontpage.png"
+          src="img/arrow_frontpage.png"
           alt="Scroll arrow"
           className="fp_scrollarrow"
         />
