@@ -1,4 +1,7 @@
-/* LEJLA, SARAH, SOFIE*/
+/* 
+LEJLA, SOFIE & SARAH
+ */
+>>>>>>> a63deed3ca70b009b08c3df6684fe2dc874818f8
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "../css/Lejla.css";
