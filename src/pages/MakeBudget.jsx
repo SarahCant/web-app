@@ -4,7 +4,7 @@ SARAH: JSX
 */
 
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "../css/Julie.css";
 import { database } from "/firebaseConfig";
 import { ref, set, onValue } from "firebase/database";
@@ -110,13 +110,13 @@ export default function MakeBudget() {
 
       {/* btn: create new budget categories */}
       <p>Opret budgetkategorier</p>
-      <Link to="/addcategory">
+      <NavLink to="/addcategory">
         <img
           src="img/plus.png"
           alt="Tilføj kategori"
           className="fp_addcategory"
         />
-      </Link>
+      </NavLink>
     </div>
   );
 }

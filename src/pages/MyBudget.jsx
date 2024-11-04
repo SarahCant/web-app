@@ -1,7 +1,7 @@
 /* SOFIE */
 import Category from "../components/Category";
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import BarChart from "../components/BarChart";
 import { useNavigate } from "react-router-dom";
 
@@ -47,13 +47,13 @@ export default function MyBudget() {
       />
       <div className="fp_addcategory_flex">
         {/* add category */}
-        <Link to="/addcategory">
+        <NavLink to="/addcategory">
           <img
             src="img/plus.png"
             alt="Tilføj kategori"
             className="fp_addcategory"
           />
-        </Link>
+        </NavLink>
       </div>
     </>
   );
