@@ -1,51 +1,93 @@
+//LEJLA// 
 import { useState, useEffect } from "react";
-import "../css/Lejla.css"; // Import the CSS file
+import "../css/Lejla.css"; 
 import "../css/App.css";
+import AlertBox from "../components/AlertBox";
+
+// Quotes list
+const quotes = [
+  "Sæt små opsparingsmål hver måned – selv en lille buffer kan redde dig i uventede situationer.",
+  "Hold styr på dine abonnementer. Selv de små udgifter løber op over tid.",
+  "Lær at skelne mellem 'behov' og 'ønsker' – det hjælper dig med at prioritere dit forbrug bedre.",
+  "Undgå små lån og afbetalingsordninger – renterne kan gøre købet dyrere, end du tror.",
+  "Lav en madplan og køb ind én gang om ugen – det mindsker både madspild og impulskøb.",
+ 
+];
 
 export default function Profile() {
-  // State initialization with localStorage fallback
+  // ---------------- State Initialization ----------------
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState(
-    () => localStorage.getItem("name") || "Emma"
-  );
-  const [email, setEmail] = useState(
-    () => localStorage.getItem("email") || "emmabamse@hotmail.com"
-  );
-  const [profileImage, setProfileImage] = useState(
-    () => localStorage.getItem("profileImage") || "public/img/profilbillede.jpg"
-  );
+  const [name, setName] = useState(() => localStorage.getItem("name") || "Emma");
+  const [email, setEmail] = useState(() => localStorage.getItem("email") || "emmabamse@hotmail.com");
+  const [profileImage, setProfileImage] = useState(() => {
+    return localStorage.getItem("profileImage") || "public/img/profilbillede.jpg";
+  });
+  const [dailyQuote, setDailyQuote] = useState("");
+  const [showInfoAlert, setShowInfoAlert] = useState(false);
 
-  // Effect to save data to localStorage
+  // ---------------- Quote Handling ----------------
+  const getRandomQuote = () => {
+    const randomIndex = Math.floor(Math.random() * quotes.length);
+    setDailyQuote(quotes[randomIndex]);
+  };
+
+  useEffect(() => {
+    getRandomQuote(); 
+
+    // Switch quete 
+    const quoteInterval = setInterval(getRandomQuote, 5 * 60 * 60 * 1000);
+
+    
+    return () => clearInterval(quoteInterval);
+  }, []);
+
+  // ---------------- LocalStorage Handling ----------------
   useEffect(() => {
     localStorage.setItem("name", name);
     localStorage.setItem("email", email);
-    localStorage.setItem("profileImage", profileImage);
+    localStorage.setItem("profileImage", profileImage); //localStorage
   }, [name, email, profileImage]);
 
-  // Toggle edit mode
+  // ---------------- Edit Mode Handling ----------------
   const handleEditClick = () => {
     setIsEditing(!isEditing);
   };
 
-  // Handle image change
+  // ---------------- Image Change Handling ----------------
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    console.log("Selected file:", file); // Check the selected file
     if (file) {
-      const imageUrl = URL.createObjectURL(file); // Create a URL for the new image
-      console.log("Generated image URL:", imageUrl); // Log the generated URL
-      setProfileImage(imageUrl); // Update the profile image
+      const imageUrl = URL.createObjectURL(file); 
+      setProfileImage(imageUrl); // Update profile image
     }
   };
 
+  // ---------------- Alert Handling ----------------
+  function handleAlert() {
+    setShowInfoAlert(true);
+  }
+
+  function closeAlert() {
+    setShowInfoAlert(false);
+  }
+
+  // ---------------- Render Component ----------------
   return (
     <>
       <h1 className="profile-title">Min profil</h1>
 
       {/* Top right icons */}
       <div className="top-icons">
-        <img src="public/img/addbuddy.png" alt="Friends" />
-        <img src="public/img/settings.png" alt="Settings" />
+        <img
+          onClick={handleAlert}
+          src="public/img/addbuddy.png"
+          alt="Friends"
+        />
+        <img
+          onClick={handleAlert}
+          src="public/img/settings.png"
+          alt="Settings"
+        />
       </div>
 
       <div className="profile-container">
@@ -53,19 +95,19 @@ export default function Profile() {
         <div className="profile-image-container">
           <img
             className="profile-image"
-            src={profileImage} // Use the current profile image
+            src={profileImage} //current profile image
             alt="Profile"
           />
 
-          {/* Show "Rediger" label if in edit mode */}
+          {/* Show "Rediger" editmode */}
           {isEditing && (
             <>
               <input
                 type="file"
                 accept="image/*"
-                onChange={handleImageChange} // Handle image upload
+                onChange={handleImageChange} 
                 id="file-input"
-                style={{ display: "none" }} // Hide file input
+                style={{ display: "none" }} 
               />
               <label htmlFor="file-input" className="edit-label">
                 Rediger
@@ -73,7 +115,7 @@ export default function Profile() {
             </>
           )}
 
-          {/* Show pencil icon when NOT in edit mode */}
+          {/* Show pencil NOT in edit mode */}
           {!isEditing && (
             <img
               className="edit-icon"
@@ -84,7 +126,7 @@ export default function Profile() {
           )}
         </div>
 
-        {/* Name field */}
+        {/* ---------------- User Info Fields ---------------- */}
         <div className="info-box">
           <div className="info-title">
             <p>Navn:</p>
@@ -101,10 +143,9 @@ export default function Profile() {
           )}
         </div>
 
-        {/* Email field */}
         <div className="info-box">
           <div className="info-title">
-            <p>Email</p>
+            <p>Email:</p>
           </div>
           {isEditing ? (
             <input
@@ -125,20 +166,24 @@ export default function Profile() {
           </button>
         )}
 
-        {/* Daily tip box, shown only when not in edit mode */}
+        {/* ---------------- Daily Tip Box ---------------- */}
         {!isEditing && (
-          <div className="daily-tip-box">
-            <p className="daily-tip">
-              "Even lessons learned the hard way, are lessons learned"
-              <br />
-            </p>
-            <br />
-            <p>
-              <span>- Sensei Wu</span>
-            </p>
-          </div>
+          <>
+            <h3 className="daily-tip-title">Dagens Tips</h3> 
+            <div className="daily-tip-box">
+              <p className="daily-tip">{dailyQuote}</p>
+            </div>
+          </>
         )}
       </div>
+
+      {/* ---------------- Alert Box ---------------- */}
+      {showInfoAlert && (
+        <AlertBox
+          alertMessage="Tak for interessen! - men denne funktion er stadig under udvikling"
+          onOk={() => closeAlert()}
+        />
+      )}
     </>
   );
 }

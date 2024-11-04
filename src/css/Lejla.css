@@ -1,4 +1,6 @@
- 
+ /*LEJLA*/
+
+/* ---------------- Add Category Styles ---------------- */
 .AddCategory_container {
   max-width: 400px;
   margin: 0 auto;
@@ -7,13 +9,19 @@
 }
 
 .categoryform {
+  margin-top: 40px;
+  margin-bottom: 300px;
+}
+
+.input-group p {
   margin-top: 20px;
+  margin-bottom: 10px; 
 }
 
-.input-group {
-  margin-bottom: 20px;
+.input-group-category p {
+  margin-bottom: 10px;
+  margin-top: 30px;
 }
-
 
 .budget-input {
   display: flex;
@@ -26,11 +34,18 @@
   font-size: 1.2em;
 }
 
-.color-picker {
-  margin-bottom: 20px;
+h3 {
+  margin-top: 40px;
 }
 
-.color-options {
+/* Color Picker Styles  */
+.color-picker p {
+  margin-top: 40px;
+}
+
+.color-options,
+.extra-color-options {
+  margin-top: 20px;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -57,6 +72,7 @@
   color: white;
 }
 
+/*  Submit Button Styles */
 .submit-btn {
   background-color: #00b9ce;
   color: white;
@@ -65,8 +81,10 @@
   border-radius: 20px;
   font-size: 1.2em;
   cursor: pointer;
+  margin-top: 50px;
 }
 
+/* Category List Styles */
 .category-list {
   margin-top: 30px;
   display: flex;
@@ -84,63 +102,7 @@
   border: none;
 }
 
-.button_budget {
-  position: absolute;
-  top: 15px;
-  left: calc(50% - 25px);
-  padding: 10px 20px;
-  /* opacity: 0; */
-  transition: opacity 1s ease;
-}
-
-
-.onboarding-container {
-  text-align: center;
-  padding: 20px;
-  margin-top: 50px;
-  position: relative; /* Tilføj positionering */
-}
-
-
-
-.onboarding-container p {
-  font-size: 4vw;
-  color: var(--dark);
-  margin-bottom: 20px;
-}
-
-.onboarding-arrow {
-  width: 50px;
-  margin: 0 auto 20px; /* Centrerer og giver afstand */
-  display: block;
-  
-}
-
-.onboarding-button {
-  background-color: var(--btn);
-  color: var(--light);
-  border: none;
-  padding: 10px 20px;
-  font-size: 4vw;
-  border-radius: 30px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.onboarding-image {
-  max-width: 180px;
-  height: auto;
-  display: block;
-  margin: 20px auto 0; /* Centrerer og giver plads */
-}
-
-
-
-
-
-
- /*  ------------------------ profil siden -------------------*/
-/* Profile page styling */
+/* ---------------- Profile Styles ---------------- */
 .profile-container {
   max-width: 400px;
   margin: 0 auto;
@@ -148,7 +110,6 @@
   position: relative;
   text-align: center;
 }
-
 
 .top-icons {
   position: absolute;
@@ -162,6 +123,7 @@
   height: 25px;
 }
 
+/*  Profile Image Styles  */
 .profile-image-container {
   position: relative;
   margin: 20px auto;
@@ -189,7 +151,22 @@
   cursor: pointer;
 }
 
-/* Info box styling */
+/* Custom File Input Label */
+.edit-label {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+
+/*  Info Box Styles */
 .info-box {
   background: linear-gradient(to bottom, var(--main) 50%, #C0D8F2 50%);
   border: 1px solid #ccc;
@@ -204,124 +181,53 @@
 .info-box input {
   width: 100%;
   padding: 10px;
-  border: none;
-  border-radius: 5px;
-  margin-top: 5px;
+  border: 2px solid #ccc;
+  border-radius: 20px;
+  font-size: 1em;
+  text-align: center;
+  font-family: "Poppins", sans-serif; 
 }
 
 .info-title {
   color: var(--dark);
   padding-bottom: 5px;
+  font-family: "Poppins", sans-serif; 
 }
 
 .info-detail {
   color: var(--dark);
   padding-top: 5px;
-  
+  font-family: "Poppins", sans-serif; 
+  font-size: 1.25rem; 
 }
 
-/* Submit button */
-.submit-btn {
-  background-color: #00b9ce;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  font-size: 1.2em;
-  cursor: pointer;
-  margin-top: 20px;
-}
-
-/* Daily tip box */
-.daily-tip-box {
-  background-color: var(--main);
-  color: var(--light);
-  border-radius: 20px;
-  padding: 15px;
-  margin-top: 20px;
-  text-align: left;
-}
-
-
-/* Styling for profile image container */
-.profile-image-container {
-  position: relative;
-  margin: 20px auto;
-  width: 130px;
-  height: 130px;
-}
-
-.profile-image {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid black;
-}
-
-/* Hide pencil icon in edit mode */
-/* .edit-icon {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: var(--main);
-  border: 1px solid black;
-  cursor: pointer;
-} */
-
-/* Styling for the custom file input label */
-.edit-label {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.6);
-  color: white;
-  padding: 5px 10px;
-  border-radius: 10px;
-  font-size: 0.9rem;
-  cursor: pointer;
-}
-
-/* Only show pencil icon when not in edit mode */
-.edit-icon {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background-color: var(--main);
-  border: 1px solid black;
-  cursor: pointer;
-  object-fit: contain; 
-}
-
-
-
-/* Wrapper for profile information */
-.profile-info-container {
-  background-color: #C0D8F2; /* Light blue background */
-  padding: 20px;
-  border-radius: 10px;
-  margin-top: 15px;
-}
-
-
-
+/* Input Adjustments  */
 .info-box input {
   width: 112%;
   padding: 12px;
   border: none;
   border-radius: 5px;
-  background-color: #C0D8F2; /* Ensure light blue background */
+  background-color: #C0D8F2; 
   color: var(--dark);
   margin: 0 auto;
   font-size: 1em;
   box-sizing: border-box;
   margin-left: -6%;
-  
+}
+
+/*  Daily Tip Box Styles  */
+.daily-tip-title {
+  font-family: "Poppins", sans-serif; 
+  font-size: 1.5rem; 
+  color: var(--dark); 
+  text-align: left; 
+  margin: 40px 0 10px 0; 
+}
+
+.daily-tip-box {
+  background-color: var(--light_blue);
+  border-radius: 20px;
+  padding: 30px;
+  margin-top: 20px;
+  text-align: left;
 }
