@@ -35,8 +35,8 @@ export default function Menu() {
             <img
               src={
                 location.pathname === "/BudgetNavigation"
-                  ? "/img/icon_budget_blue.png"
-                  : "/img/icon_budget.png"
+                  ? "img/icon_budget_blue.png"
+                  : "img/icon_budget.png"
               }
               alt="Budget"
             />
@@ -62,8 +62,8 @@ export default function Menu() {
             <img
               src={
                 location.pathname === "/Savings"
-                  ? "/img/icon_savings_blue.png"
-                  : "/img/icon_savings.png"
+                  ? "img/icon_savings_blue.png"
+                  : "img/icon_savings.png"
               }
               alt="Savings"
             />
@@ -81,8 +81,8 @@ export default function Menu() {
             <img
               src={
                 location.pathname === "/profile"
-                  ? "/img/icon_profile_blue.png"
-                  : "/img/icon_profile.png"
+                  ? "img/icon_profile_blue.png"
+                  : "img/icon_profile.png"
               }
               alt="Profile"
             />

@@ -144,7 +144,7 @@ export default function UpdateCategory() {
         <img
           onClick={handleGoBack}
           className="arrow_back"
-          src="/img/arrow_quickadd.png"
+          src="img/arrow_quickadd.png"
           alt=""
         />
         <h1>{category.name}</h1>
@@ -152,7 +152,7 @@ export default function UpdateCategory() {
 
       <div className="h2_flex">
         <h2 className="h2_update">Ret i kategori</h2>
-        <img className="pencil_update" src="/img/pencil.png" alt="" />
+        <img className="pencil_update" src="img/pencil.png" alt="" />
       </div>
 
       {/* form to make category changes in */}

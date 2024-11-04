@@ -140,7 +140,7 @@ export default function FrontPage() {
         </section>
         <section className={`fp_streak ${isScrolled ? "fade-out" : "fade-in"}`}>
           <p>Du klarer det så godt!</p>
-          <img src="../public/img/streak.png" alt="App streak" />
+          <img src="../publicimg/streak.png" alt="App streak" />
           <p className="fp_streak_days">3</p>
         </section>
       </div>
@@ -166,7 +166,7 @@ export default function FrontPage() {
       {/* arrow guiding scroll */}
       {showArrow && !isScrolled && (
         <img
-          src="../public/img/arrow_frontpage.png"
+          src="../publicimg/arrow_frontpage.png"
           alt="Scroll arrow"
           className="fp_scrollarrow"
         />

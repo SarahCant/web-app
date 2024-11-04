@@ -24,7 +24,7 @@ export default function Profile() {
   );
   const [profileImage, setProfileImage] = useState(() => {
     return (
-      localStorage.getItem("profileImage") || "public/img/profilbillede.jpg"
+      localStorage.getItem("profileImage") || "publicimg/profilbillede.jpg"
     );
   });
   const [dailyQuote, setDailyQuote] = useState("");
@@ -82,14 +82,10 @@ export default function Profile() {
 
       {/* Top right icons */}
       <div className="top-icons">
+        <img onClick={handleAlert} src="publicimg/addbuddy.png" alt="Friends" />
         <img
           onClick={handleAlert}
-          src="public/img/addbuddy.png"
-          alt="Friends"
-        />
-        <img
-          onClick={handleAlert}
-          src="public/img/settings.png"
+          src="publicimg/settings.png"
           alt="Settings"
         />
       </div>
@@ -123,7 +119,7 @@ export default function Profile() {
           {!isEditing && (
             <img
               className="edit-icon"
-              src="public/img/pencil.png"
+              src="publicimg/pencil.png"
               alt="Edit Profile"
               onClick={handleEditClick}
             />
