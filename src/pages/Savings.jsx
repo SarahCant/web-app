@@ -1,6 +1,7 @@
-/*JULIE */
+/*  JULIE  */
+/*  CSS Animation SOFIE */
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ProgressBar from "../components/ProgressBar";
 import "../css/Julie.css";
 import "../css/App.css";
@@ -8,11 +9,21 @@ import AlertBox from "../components/AlertBox";
 
 export default function Savings() {
   // State to manage savings amount and goal
-  const [savings, setSavings] = useState(500); // Initial savings amount
-  const [goal, setGoal] = useState(1000); // Initial savings goal
+  const [savings, setSavings] = useState(() => {
+    return Number(localStorage.getItem("savings")) || 500;
+  });
+  const [goal, setGoal] = useState(() => {
+    return Number(localStorage.getItem("goal")) || 1000;
+  });
   const [inputValue, setInputValue] = useState(""); // Value from the input field
   const [showInfoAlert, setShowInfoAlert] = useState(false); // Toggle to show alert if input is empty
   const [playAnimation, setPlayAnimation] = useState(false);
+
+  // Update localStorage whenever savings or goal changes
+  useEffect(() => {
+    localStorage.setItem("savings", savings);
+    localStorage.setItem("goal", goal);
+  }, [savings, goal]);
 
   // Function to add money to savings
   const handleAdd = () => {
