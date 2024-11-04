@@ -1,5 +1,5 @@
 /*  JULIE  */
-/*  CSS Animation SOFIE */
+/*  CSS Animation - SOFIE  */
 
 import { useState, useEffect } from "react";
 import ProgressBar from "../components/ProgressBar";
