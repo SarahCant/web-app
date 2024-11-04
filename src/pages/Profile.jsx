@@ -24,7 +24,7 @@ export default function Profile() {
   );
   const [profileImage, setProfileImage] = useState(() => {
     return (
-      localStorage.getItem("profileImage") || "public/img/profilbillede.jpg"
+      localStorage.getItem("profileImage") || "/profilbillede.jpg"
     );
   });
   const [dailyQuote, setDailyQuote] = useState("");

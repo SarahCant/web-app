@@ -1,5 +1,5 @@
 /* SARAH */
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function BudgetNavigation() {
   return (
@@ -13,23 +13,23 @@ export default function BudgetNavigation() {
         </div>
 
         <div className="budgetnav_btns">
-          <Link to="/makebudget" className="btn">
+          <NavLink to="/makebudget" className="btn">
             Opret budget
             <img
               src="/img/plus.png"
               alt="Tilføj budget"
               className="budgetnav_btn_img"
             />
-          </Link>
+          </NavLink>
 
-          <Link to="/mybudget" className="btn">
+          <NavLink to="/mybudget" className="btn">
             Budgetoversigt
             <img
               src="/img/icon_budget.png"
               alt="Min budgetoversigt"
               className="budgetnav_btn_img"
             />
-          </Link>
+          </NavLink>
         </div>
 
         <img
