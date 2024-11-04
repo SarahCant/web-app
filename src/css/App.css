@@ -80,3 +80,13 @@ input[type="number"] {
   font-size: 1em;
   text-align: center;
 }
+
+/* Menu */
+.menu_knap.active img.active_icon {
+  display: inline;
+}
+
+.menu_knap.active img.active_icon,
+.menu_knap img.active_icon {
+  display: none;
+}
