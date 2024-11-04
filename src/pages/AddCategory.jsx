@@ -8,7 +8,6 @@ import "../css/Lejla.css";
 import "../css/App.css";
 import Category from "../components/Category";
 import AlertBox from "../components/AlertBox";
-import { availableBudget } from "./MakeBudget";
 
 export default function AddCategory() {
   const [categories, setCategories] = useState([]);
@@ -16,9 +15,8 @@ export default function AddCategory() {
   const [budget, setBudget] = useState("");
   const [color, setColor] = useState("");
   const [showInfoAlert, setShowInfoAlert] = useState(false);
-  const [showBudgetAlert, setShowBudgetAlert] = useState(false);
   const [showExtraColors, setShowExtraColors] = useState(false); //ekstra colors
-  const [selectedExtraColor, setSelectedExtraColor] = useState(""); 
+  const [selectedExtraColor, setSelectedExtraColor] = useState("");
   const navigate = useNavigate();
 
   async function handleSubmit(e) {
@@ -26,17 +24,6 @@ export default function AddCategory() {
 
     if (!categoryName || !color || !budget) {
       setShowInfoAlert(true);
-      return;
-    }
-
-    const newBudget = parseFloat(budget);
-    const currentTotalBudget = categories.reduce(
-      (sum, category) => sum + parseFloat(category.budget),
-      0
-    );
-
-    if (currentTotalBudget + newBudget > availableBudget) {
-      setShowBudgetAlert(true);
       return;
     }
 
@@ -73,7 +60,6 @@ export default function AddCategory() {
 
   function closeAlert() {
     setShowInfoAlert(false);
-    setShowBudgetAlert(false);
   }
 
   const colors = [
@@ -117,7 +103,7 @@ export default function AddCategory() {
     getCategory();
   }, []);
 
-  // extra color function 
+  // extra color function
   function handleColorSelect(c, isExtraColor = false) {
     setColor(c);
     if (isExtraColor) {
@@ -131,7 +117,7 @@ export default function AddCategory() {
   return (
     <>
       <h1>Kategorier</h1>
-      
+
       <div className="AddCategory_container">
         <form onSubmit={handleSubmit} className="category-form">
           <div className="input-group">
@@ -203,12 +189,6 @@ export default function AddCategory() {
         {showInfoAlert && (
           <AlertBox
             alertMessage="Hov! Du har vist ikke udfyldt alle felter"
-            onOk={() => closeAlert()}
-          />
-        )}
-        {showBudgetAlert && (
-          <AlertBox
-            alertMessage="Den samlede kategori budget overskrider det tilgængelige budget."
             onOk={() => closeAlert()}
           />
         )}
