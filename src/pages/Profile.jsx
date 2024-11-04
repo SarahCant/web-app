@@ -166,7 +166,7 @@ export default function Profile() {
         {/* Save button in edit mode */}
         {isEditing && (
           <button className="submit-btn" onClick={() => setIsEditing(false)}>
-            Save
+            Gem
           </button>
         )}
 
