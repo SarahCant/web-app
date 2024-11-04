@@ -1,6 +1,5 @@
 /* 
-LEJLA: INITIAL DRAFT + CSS
-SOFIE & SARAH: REORGANISATION + DEVIDE INTO CATEGORY COMPONENT 
+LEJLA, SOFIE & SARAH
  */
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
