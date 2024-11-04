@@ -2,6 +2,7 @@
 import "../css/App.css";
 import "../css/Julie.css";
 import { useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function Menu() {
   // Retrieve the current path location
@@ -26,8 +27,9 @@ export default function Menu() {
         </a>
 
         {/* Budget link with conditional icon color based on active path */}
-        <a
-          href="/BudgetNavigation"
+
+        <NavLink
+          to="/BudgetNavigation"
           className="menu_knap"
           style={{ textDecoration: "none" }}
         >
@@ -42,7 +44,7 @@ export default function Menu() {
             />
             <p style={{ textDecoration: "none" }}>Budget</p>
           </div>
-        </a>
+        </NavLink>
 
         {/* Divider in the middle of the menu */}
         <div className="midter_div"></div>
