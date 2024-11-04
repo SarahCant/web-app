@@ -92,16 +92,6 @@ export default function Profile() {
           src="public/img/settings.png"
           alt="Settings"
         />
-        <img
-          onClick={handleAlert}
-          src="public/img/addbuddy.png"
-          alt="Friends"
-        />
-        <img
-          onClick={handleAlert}
-          src="public/img/settings.png"
-          alt="Settings"
-        />
       </div>
 
       <div className="profile-container">
