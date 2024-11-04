@@ -2,6 +2,48 @@
 /* --- Componements --- */
 /* -------------------- */
 
+/* --- Alert Box --- */
+.alert_box {
+  position: absolute;
+  width: 85%;
+  height: 120%;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(254, 253, 251, 0.7);
+  z-index: 10;
+}
+
+.logo_alert {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  top: 20%;
+}
+
+.circle_alert {
+  display: inline-block;
+  width: 85%;
+  height: 17rem;
+  border-radius: 50%;
+  background-color: #fefdfb;
+  position: absolute;
+  top: 25%;
+}
+
+.btn_alert {
+  position: absolute;
+  top: 60%;
+}
+
+.p_alert {
+  position: absolute;
+  text-align: center;
+  width: 50%;
+  top: 35%;
+}
+
 /* --- Animation --- */
 .bg_animation {
   background-color: #e1e9ff;
@@ -17,7 +59,7 @@
   z-index: 2;
 }
 
-/* Keyframe for the bg_animation div, der får den til at fade væk */
+/* Keyframe for the bg_animation div that makes it fade away */
 @keyframes fadeAnimation {
   0% {
     opacity: 1;
@@ -104,7 +146,7 @@
   margin-top: 75%;
 }
 
-/* --- Barchart --- */
+/* --- Bar Chart --- */
 .placement_txt_barchart {
   width: 100%;
   margin-top: 10%;
@@ -184,13 +226,26 @@
   width: 95%;
 }
 
-.color-circle {
+.color_circle {
   width: 50px;
   height: 50px;
   border-radius: 50%;
   cursor: pointer;
   border: 2px solid transparent;
   margin: 2%;
+}
+
+.color_circle.selected {
+  border: 2px solid #000;
+}
+
+.add_circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2em;
+  background-color: #00b9ce;
+  color: white;
 }
 
 .plus_update {
@@ -224,43 +279,34 @@
   align-items: center;
 }
 
-.alert_box {
+/* --- Savings ---*/
+.coins_savings {
+  width: 15%;
   position: absolute;
-  width: 85%;
-  height: 120%;
-  top: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(254, 253, 251, 0.7);
-  z-index: 10;
+  top: 28%;
+  display: none; /* Hides untill the function gets called */
+  animation: fallingCoins 1.5s forwards;
 }
 
-.logo_alert {
-  width: 100%;
-  position: absolute;
-  z-index: 5;
-  top: 20%;
+/* Makes the coins visible when the animation starts/the function gets called */
+.coins_savings.show_coins_savings {
+  display: block;
 }
 
-.circle_alert {
-  display: inline-block;
-  width: 85%;
-  height: 17rem;
-  border-radius: 50%;
-  background-color: #fefdfb;
-  position: absolute;
-  top: 25%;
-}
-
-.btn_alert {
-  position: absolute;
-  top: 60%;
-}
-
-.p_alert {
-  position: absolute;
-  text-align: center;
-  width: 50%;
-  top: 35%;
+/* Keyframe that makes an illustration of some coins look like they fall into the jar when the "indsæt" btn is clikked */
+@keyframes fallingCoins {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(30px);
+    opacity: 0;
+  }
 }

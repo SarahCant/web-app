@@ -10,25 +10,23 @@ export default function MyBudget() {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const navigate = useNavigate();
 
+  // navigates to update category page that displays the information of the chosed category based on its id
   const handleCategoryClick = (categoryId) => {
     navigate(`/updatecategory/${categoryId}`);
   };
 
   useEffect(() => {
+    // fetch the categories from firebase
     async function fetchCategories() {
-      try {
-        const response = await fetch(
-          "https://web-app-c295f-default-rtdb.firebaseio.com/category.json"
-        );
-        const data = await response.json();
-        const categoryArray = Object.keys(data).map((key) => ({
-          id: key,
-          ...data[key],
-        }));
-        setCategories(categoryArray);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-      }
+      const response = await fetch(
+        "https://web-app-c295f-default-rtdb.firebaseio.com/category.json"
+      );
+      const data = await response.json();
+      const categoryArray = Object.keys(data).map((key) => ({
+        id: key,
+        ...data[key],
+      }));
+      setCategories(categoryArray);
     }
 
     fetchCategories();
@@ -37,8 +35,10 @@ export default function MyBudget() {
   return (
     <>
       <h1>Mit budget</h1>
+      {/* bar chart */}
       <BarChart data={categories} />
       <p className="p_mybudget">Tryk på en kategori for at redigere den:</p>
+      {/* categories, select category */}
       <Category
         categories={categories}
         selectedCategory={selectedCategory}
@@ -46,9 +46,10 @@ export default function MyBudget() {
         onClickCategory={handleCategoryClick}
       />
       <div className="fp_addcategory_flex">
+        {/* add category */}
         <Link to="/addcategory">
           <img
-            src="../public/img/plus.png"
+            src="/img/plus.png"
             alt="Tilføj kategori"
             className="fp_addcategory"
           />

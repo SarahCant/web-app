@@ -10,10 +10,11 @@ export default function AlertBox({
 }) {
   return (
     <div className="alert_box">
-      <img className="logo_alert" src="../public/img/logo_fire.png" alt="" />
+      <img className="logo_alert" src="/img/logo_fire.png" alt="logo" />
       <span className="circle_alert"></span>
       <p className="p_alert">{alertMessage}</p>
       <div className="btn_alert">
+        {/* different buttons for different occaisions */}
         {showConfirmButtons ? (
           <>
             <button className="btn" onClick={onConfirm}>

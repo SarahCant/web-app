@@ -18,6 +18,7 @@ export default function UpdateCategory() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // fetch the category data from firebase
     async function getCategory() {
       const response = await fetch(url);
       const categoryData = await response.json();
@@ -32,7 +33,7 @@ export default function UpdateCategory() {
     getCategory();
   }, [url]);
 
-  // Update remaining when budget changes
+  // updates the remaining amount when the budget amount changes
   useEffect(() => {
     const budgetNumber = Number(budget);
     if (!isNaN(budgetNumber)) {
@@ -41,6 +42,7 @@ export default function UpdateCategory() {
     }
   }, [budget, spent]);
 
+  // handles changes in the budget input field with some validation criterias
   const handleBudgetChange = (e) => {
     const value = e.target.value;
     if (value === "" || /^-?\d*\.?\d*$/.test(value)) {
@@ -48,7 +50,7 @@ export default function UpdateCategory() {
     }
   };
 
-  // Liste over farver
+  // list of colors to chose from
   const colors = [
     "#F8E392",
     "#F6A58C",
@@ -60,10 +62,12 @@ export default function UpdateCategory() {
     "#00B9CE",
   ];
 
+  // navigates one page back when clicking on the arrow
   const handleGoBack = () => {
     navigate(-1);
   };
 
+  // handles submit of new changes with patch
   async function handleSubmit(event) {
     event.preventDefault();
 
@@ -83,10 +87,12 @@ export default function UpdateCategory() {
     }
   }
 
+  // shows alert box - makes the user confirm the delete
   function handleDelete() {
     setShowDeleteAlert(true);
   }
 
+  // handles delete of category
   async function confirmDelete() {
     const response = await fetch(url, {
       method: "DELETE",
@@ -99,6 +105,7 @@ export default function UpdateCategory() {
     setShowDeleteAlert(false);
   }
 
+  // close alert box
   function closeAlert() {
     setShowDeleteAlert(false);
   }
@@ -109,7 +116,7 @@ export default function UpdateCategory() {
         <img
           onClick={handleGoBack}
           className="arrow_back"
-          src="../public/img/arrow_quickadd.png"
+          src="/img/arrow_quickadd.png"
           alt=""
         />
         <h1>{category.name}</h1>
@@ -117,9 +124,10 @@ export default function UpdateCategory() {
 
       <div className="h2_flex">
         <h2 className="h2_update">Ret i kategori</h2>
-        <img className="pencil_update" src="../public/img/pencil.png" alt="" />
+        <img className="pencil_update" src="/img/pencil.png" alt="" />
       </div>
 
+      {/* form to make category changes in */}
       <form onSubmit={handleSubmit}>
         <div className="input_flex_update">
           <label className="label_update">Ret navn på kategori</label>
@@ -140,17 +148,13 @@ export default function UpdateCategory() {
             {colors.map((c, index) => (
               <div
                 key={index}
-                className={`color-circle ${c === color ? "selected" : ""}`}
+                className={`color_circle ${c === color ? "selected" : ""}`}
                 style={{ backgroundColor: c }}
                 onClick={() => setColor(c)}
               />
             ))}
-            <div className="color-circle add-circle">
-              <img
-                className="plus_update"
-                src="../public/img/plus.png"
-                alt=""
-              />
+            <div className="color_circle add_circle">
+              <img className="plus_update" src="/img/plus.png" alt="" />
             </div>
           </div>
         </div>
@@ -174,11 +178,13 @@ export default function UpdateCategory() {
         </div>
       </form>
 
+      {/* delete button */}
       <div className="btn_flex">
         <button className="btn btn_delete" onClick={handleDelete}>
           Slet kategori
         </button>
 
+        {/* alert/confirmation box */}
         {showDeleteAlert && (
           <AlertBox
             alertMessage="Er du sikker på, at du vil slette denne kategori?"

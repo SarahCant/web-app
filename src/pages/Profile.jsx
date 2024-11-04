@@ -1,6 +1,6 @@
-//LEJLA// 
+//LEJLA//
 import { useState, useEffect } from "react";
-import "../css/Lejla.css"; 
+import "../css/Lejla.css";
 import "../css/App.css";
 import AlertBox from "../components/AlertBox";
 
@@ -11,16 +11,21 @@ const quotes = [
   "Lær at skelne mellem 'behov' og 'ønsker' – det hjælper dig med at prioritere dit forbrug bedre.",
   "Undgå små lån og afbetalingsordninger – renterne kan gøre købet dyrere, end du tror.",
   "Lav en madplan og køb ind én gang om ugen – det mindsker både madspild og impulskøb.",
- 
 ];
 
 export default function Profile() {
   // ---------------- State Initialization ----------------
   const [isEditing, setIsEditing] = useState(false);
-  const [name, setName] = useState(() => localStorage.getItem("name") || "Emma");
-  const [email, setEmail] = useState(() => localStorage.getItem("email") || "emmabamse@hotmail.com");
+  const [name, setName] = useState(
+    () => localStorage.getItem("name") || "Emma"
+  );
+  const [email, setEmail] = useState(
+    () => localStorage.getItem("email") || "emmabamse@hotmail.com"
+  );
   const [profileImage, setProfileImage] = useState(() => {
-    return localStorage.getItem("profileImage") || "public/img/profilbillede.jpg";
+    return (
+      localStorage.getItem("profileImage") || "public/img/profilbillede.jpg"
+    );
   });
   const [dailyQuote, setDailyQuote] = useState("");
   const [showInfoAlert, setShowInfoAlert] = useState(false);
@@ -32,12 +37,11 @@ export default function Profile() {
   };
 
   useEffect(() => {
-    getRandomQuote(); 
+    getRandomQuote();
 
-    // Switch quete 
+    // Switch quete
     const quoteInterval = setInterval(getRandomQuote, 5 * 60 * 60 * 1000);
 
-    
     return () => clearInterval(quoteInterval);
   }, []);
 
@@ -57,7 +61,7 @@ export default function Profile() {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      const imageUrl = URL.createObjectURL(file); 
+      const imageUrl = URL.createObjectURL(file);
       setProfileImage(imageUrl); // Update profile image
     }
   };
@@ -88,6 +92,16 @@ export default function Profile() {
           src="public/img/settings.png"
           alt="Settings"
         />
+        <img
+          onClick={handleAlert}
+          src="public/img/addbuddy.png"
+          alt="Friends"
+        />
+        <img
+          onClick={handleAlert}
+          src="public/img/settings.png"
+          alt="Settings"
+        />
       </div>
 
       <div className="profile-container">
@@ -105,9 +119,9 @@ export default function Profile() {
               <input
                 type="file"
                 accept="image/*"
-                onChange={handleImageChange} 
+                onChange={handleImageChange}
                 id="file-input"
-                style={{ display: "none" }} 
+                style={{ display: "none" }}
               />
               <label htmlFor="file-input" className="edit-label">
                 Rediger
@@ -169,7 +183,7 @@ export default function Profile() {
         {/* ---------------- Daily Tip Box ---------------- */}
         {!isEditing && (
           <>
-            <h3 className="daily-tip-title">Dagens Tips</h3> 
+            <h3 className="daily-tip-title">Dagens Tips</h3>
             <div className="daily-tip-box">
               <p className="daily-tip">{dailyQuote}</p>
             </div>

@@ -3,12 +3,13 @@ import "../css/Sofie.css";
 import { useEffect } from "react";
 
 export default function Animation() {
+  // makes logo visible after a slight delay to make sure it is shown right
   useEffect(() => {
-    const logoElement = document.querySelector(".logo_animation");
-    // Added class that makes logo visible after mounting
+    const logo = document.querySelector(".logo_animation");
+
     setTimeout(() => {
-      logoElement.classList.add("start_visible");
-    }, 200); // Slight delay to ensure visibility change is registered
+      logo.classList.add("start_visible");
+    }, 200);
   }, []);
 
   return (
@@ -17,14 +18,10 @@ export default function Animation() {
         <div className="logo_rel_animation">
           <img
             className="logo_animation"
-            src="../public/img/logo_nofire.png"
+            src="/img/logo_nofire.png"
             alt="logo"
           />
-          <img
-            className="streak_animation"
-            src="../public/img/streak.png"
-            alt=""
-          />
+          <img className="streak_animation" src="/img/streak.png" alt="fire" />
         </div>
         <h1 className="h1_animation">ØkonomILD</h1>
       </div>
