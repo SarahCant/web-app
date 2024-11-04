@@ -8,7 +8,6 @@ import "../css/Lejla.css";
 import "../css/App.css";
 import Category from "../components/Category";
 import AlertBox from "../components/AlertBox";
-import { availableBudget } from "./MakeBudget";
 
 export default function AddCategory() {
   const [categories, setCategories] = useState([]);
