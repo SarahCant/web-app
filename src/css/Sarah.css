@@ -35,7 +35,7 @@
 }
 
 .categories button {
-  width: 100%;
+  width: 110%;
   height: 100%;
   border: none;
 }
@@ -376,6 +376,11 @@
   background-color: var(--btn); /*  bg when unfolded */
 }
 
+.ae_input_group {
+  width: 60%;
+  margin: auto;
+}
+
 .bg_btn {
   background-color: var(--btn); /* when visible */
 }
@@ -383,6 +388,7 @@
 .bg_light {
   background-color: var(--light); /* default bg */
 }
+
 .ae_quickadd_btn.active {
   background-color: var(--btn);
   color: var(--light);
