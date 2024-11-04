@@ -136,19 +136,19 @@ export default function AddCategory() {
             />
           </div>
 
-          <div className="color-picker">
-            <p>Vælg farve</p>
-            <div className="color-options">
+          <div className="input_flex_update">
+            <p className="p_addcat">Vælg farve</p>
+            <div className="color_flex_update">
               {colors.map((c, index) => (
                 <div
                   key={index}
-                  className={`color-circle ${c === color ? "selected" : ""}`}
+                  className={`color_circle ${c === color ? "selected" : ""}`}
                   style={{ backgroundColor: c }}
                   onClick={() => handleColorSelect(c)}
                 />
               ))}
               <div
-                className="color-circle add-circle"
+                className="color_circle add_circle"
                 style={{ backgroundColor: selectedExtraColor || "#00B9CE" }} // color used
                 onClick={() => setShowExtraColors(!showExtraColors)}
               >
@@ -157,11 +157,11 @@ export default function AddCategory() {
             </div>
 
             {showExtraColors && (
-              <div className="extra-color-options">
+              <div className="color_flex_update">
                 {extraColors.map((c, index) => (
                   <div
                     key={index}
-                    className={`color-circle ${c === color ? "selected" : ""}`}
+                    className={`color_circle ${c === color ? "selected" : ""}`}
                     style={{ backgroundColor: c }}
                     onClick={() => handleColorSelect(c, true)}
                   />
@@ -179,7 +179,6 @@ export default function AddCategory() {
                 onChange={(e) => setBudget(e.target.value)}
                 placeholder="DKK"
               />
-              <span>DKK</span>
             </div>
           </div>
 

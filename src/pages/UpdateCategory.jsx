@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import "../css/sofie.css";
+import "../css/Sofie.css";
 import AlertBox from "../components/AlertBox";
 
 export default function UpdateCategory() {
@@ -13,6 +13,8 @@ export default function UpdateCategory() {
   const [remaining, setRemaining] = useState("");
   const [spent, setSpent] = useState("");
   const [showDeleteAlert, setShowDeleteAlert] = useState(false);
+  const [showExtraColors, setShowExtraColors] = useState(false); //ekstra colors
+  const [selectedExtraColor, setSelectedExtraColor] = useState("");
   const params = useParams();
   const url = `https://web-app-c295f-default-rtdb.firebaseio.com/category/${params.id}.json`;
   const navigate = useNavigate();
@@ -60,6 +62,21 @@ export default function UpdateCategory() {
     "#FF7541",
     "#F8A7D9",
     "#00B9CE",
+  ];
+
+  const extraColors = [
+    "#FAD6A5",
+    "#E1E3E1",
+    "#B2EBE0",
+    "#FFB6C1",
+    "#D5B8F6",
+    "#FDE68A",
+    "#FFD700",
+    "#87CEEB",
+    "#FF69B4",
+    "#BA55D3",
+    "#98FB98",
+    "#FFE4E1",
   ];
 
   // navigates one page back when clicking on the arrow
@@ -110,6 +127,17 @@ export default function UpdateCategory() {
     setShowDeleteAlert(false);
   }
 
+  // extra color function
+  function handleColorSelect(c, isExtraColor = false) {
+    setColor(c);
+    if (isExtraColor) {
+      setSelectedExtraColor(c); // pick extra color
+      setShowExtraColors(false); // close extra color
+    } else {
+      setSelectedExtraColor(""); // remove extra color - when normal color picked
+    }
+  }
+
   return (
     <div>
       <div className="arrow_h1">
@@ -150,13 +178,30 @@ export default function UpdateCategory() {
                 key={index}
                 className={`color_circle ${c === color ? "selected" : ""}`}
                 style={{ backgroundColor: c }}
-                onClick={() => setColor(c)}
+                onClick={() => handleColorSelect(c)}
               />
             ))}
-            <div className="color_circle add_circle">
-              <img className="plus_update" src="/img/plus.png" alt="" />
+
+            <div
+              className="color_circle add_circle"
+              style={{ backgroundColor: selectedExtraColor || "#00B9CE" }} // color used
+              onClick={() => setShowExtraColors(!showExtraColors)}
+            >
+              {selectedExtraColor ? "" : "+"} {/* change icon */}
             </div>
           </div>
+          {showExtraColors && (
+            <div className="color_flex_update">
+              {extraColors.map((c, index) => (
+                <div
+                  key={index}
+                  className={`color_circle ${c === color ? "selected" : ""}`}
+                  style={{ backgroundColor: c }}
+                  onClick={() => handleColorSelect(c, true)}
+                />
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="input_flex_update">

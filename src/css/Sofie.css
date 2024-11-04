@@ -219,10 +219,11 @@
 }
 
 .color_flex_update {
-  display: flex;
+  display: flex !important;
   justify-content: space-around;
   flex-wrap: wrap;
   width: 95%;
+  margin-top: 2%;
 }
 
 .color_circle {
@@ -249,11 +250,6 @@
 
 .plus_update {
   height: 1.5rem;
-}
-
-.input_update[type="text"],
-.input_update[type="number"] {
-  width: 12rem;
 }
 
 .btn_delete {
