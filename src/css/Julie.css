@@ -1,3 +1,6 @@
+
+/*  MENU  */
+
 .menu_div {
   width: 100%;
   height: 80px;
@@ -57,25 +60,33 @@ text-decoration: none !important;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 
+/*  SAVINGS PAGE  */
+
+
 .savings-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Fyld hele højden af browseren */
   text-align: center;
 }
 
+.p_savings{
+  color: var(black);
+  font-size: 14px;
+  margin-top: 9px;
+}
+
 .savings-heading {
-  align-self: flex-start; /* Gør overskriften venstrestillet */
-  margin-left: 0px; /* Tilføjer lidt margen fra venstre kant */
+  align-self: flex-start; 
+  margin-left: 0px; 
 }
 
 .savings-container {
   margin: 20px;
 }
 
-/*MakeBudget*/
+/*  MAKE BUDGET PAGE  */
 
 .form-container {
     display: flex;
@@ -90,9 +101,9 @@ text-decoration: none !important;
     border: 1px solid #ccc;
     width: 300px;
     text-align: center;
-    border: none; /* Remove border color */
+    border: none; 
   }
-  
+   
   .button-container {
     display: flex;
     justify-content: center;
@@ -112,15 +123,16 @@ text-decoration: none !important;
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centerer alt indhold horisontalt */
+    align-items: center; 
     border-radius: 8px;
   }
   
-  .makebudget_main h1 {
-    font-size: 2em;
-    color: #5a7384;
-    text-align: center; /* Centrerer overskriften */
-  }
+  .h1_MB{
+text-align: left;
+width: 100%;
+padding-left: 20px; 
+margin: 0 0 20px 0;
+}
   
   .input-container {
     position: relative;
@@ -131,12 +143,12 @@ text-decoration: none !important;
     align-items: center;
     padding: 0;
     margin: 0;
-    margin-bottom: 20px; /* Adds space between input fields and the next section */
+    margin-bottom: 20px; 
 }
 
 .hjælpe_div, .input-group_j {
-    width: 100%; /* Gør både hjælpe_div og input-group_j lige brede */
-        border: none; /* Remove border color */
+    width: 100%; 
+        border: none; 
 }
 
 .hjælpe_div {
@@ -172,7 +184,7 @@ text-decoration: none !important;
     width: 100%;
     padding: 15px;
     font-size: 1.1em;
-    border: none; /* Remove border color */
+    border: none; 
     background-color: #CDF4FD;
     text-align: center;
     box-sizing: border-box;
@@ -184,23 +196,21 @@ text-decoration: none !important;
     font-weight: bold;
     margin: 20px 0;
     color: black;
-    text-align: center; /* Centerer teksten */
+    text-align: center; 
   }
   
   .fp_addcategory {
-    width: 60px;
-    margin: 20px 0;
-  }
+    margin: 20px auto; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: -5.5%;
+}
   
   .fp_addcategory img {
     width: 100%;
   }
-  
-  /*p {
-    font-size: 1.2em;
-    color: #333;
-    text-align: center;
-  }*/
   
   .mb_p {
     color: white;

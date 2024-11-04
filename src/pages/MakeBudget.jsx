@@ -55,7 +55,7 @@ export default function MakeBudget() {
 
   return (
     <div className="makebudget_main">
-      <h1>Lav budget</h1>
+      <h1 className="h1_MB">Lav budget</h1>
 
       {/* input sections for income + expenses */}
       <div className="input-container">
