@@ -97,7 +97,7 @@ export default function AddExpenses() {
     <div className="ae_main">
       <p>Udgift</p>
       <div className="input-group">
-        <div className="budget-input">
+        <div className="ae_budget_input">
           <input
             type="number"
             placeholder="Tilføj beløb"
@@ -108,7 +108,7 @@ export default function AddExpenses() {
         </div>
       </div>
 
-      <p>Note</p>
+      <p className="ae_note">Note</p>
       <div className="input-group">
         <div className="budget-input">
           <input type="text" placeholder="Tilføj note" />
